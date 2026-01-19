@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VeggieFresh Catalogue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- jsPDF (optional) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- IMPORTANT: load scripts AFTER DOM -->
+  <script src="images.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="logo">VeggieFresh</div>
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="catalogue.html">📦 Catalogue</a>
+  </nav>
+</header>
+  <h1>VeggieFresh Product Catalogue</h1>
+
+  <!-- SEARCH + FILTER -->
+  <div class="top-controls">
+    <input id="searchBox" type="text" placeholder="Search product...">
+    <select id="categoryFilter">
+      <option value="all">All Categories</option>
+    </select>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <div id="catalogGrid"></div>
+
+  <!-- FLOATING CART PANEL -->
+  <div id="floatingCart">
+    <h3>
+  Cart
+  <span id="cartQty">0</span>
+  <div id="cartValue">₹ 0.00</div>
+</h3>
+
+
+    <button id="copyOrder">📋 Copy Order</button>
+    <button id="sendWhatsapp">🟢 Send on WhatsApp</button>
+  </div>
+
+</body>
+</html>
