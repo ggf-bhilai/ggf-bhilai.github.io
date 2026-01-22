@@ -65,7 +65,6 @@ const images = [
 "Mae Pranom Sweet Chilli Sauce 980gm - Rs. 250.00, Japanese, Thai & Oriental.jpg",
 "Mala's Blueberry Fruit Filling 1Kg - Rs. 450.00, Bakery Fillings.jpg",
 "Mala's Strawberry Fruit Filling 1Kg - Rs. 450.00, Bakery Fillings.jpg",
-"McCain CrispOns - Rs. 200.00, Frozen Veg Snacks.jpg",
 "McCain Favorita French Fries 9mm 2.5 Kg - Rs. 300, Frozen Veg Snacks.jpg",
 "McCain Popular Veg Burger Patty 1.2Kg - Rs. 250, Frozen Veg Snacks.jpg",
 "McCain Regular French Fries 9mm 2.5 Kg - Rs. 350.00, Frozen Veg Snacks.jpg",
@@ -136,4 +135,5 @@ const images = [
 "Mccain French Fries 200gm - Rs. 59.00, Frozen Veg Snacks.jpg",
 "Mccain Smiles 175gm - Rs. 61.00, Frozen Veg Snacks.jpg",
 ];
+
 
