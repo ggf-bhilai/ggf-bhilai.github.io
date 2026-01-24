@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
       name: name,
       category: category,
       price: price,
-      qty: 0
+      qty: 0,
 	  brand: name.split(" ")[0].toLowerCase()   // 👈 BRAND
     });
   });
@@ -381,8 +381,19 @@ card.setAttribute("data-brand", p.brand);
   categoryFilter.onchange = render;
 
   render();
-    
-});
+  
+  setTimeout(function () {
+  var hash = window.location.hash;
+  if (hash.startsWith("#brand=")) {
+    var brand = hash.replace("#brand=", "");
+    var el = document.getElementById("brand-" + brand);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+}, 300);
 
+  
+});
 
 
