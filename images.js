@@ -50,7 +50,7 @@ const images = [
 "Godrej Yummiez Chilli Garlic Potato Bites 420g - Rs. 125.00, Frozen Veg Snacks.jpg",
 "Godrej Yummiez Veg Burger Patty 340gm - Rs. 131.00, Frozen Veg Snacks.jpg",
 "Golden Crown Beans In Tomato Sauce 450gm - Rs. 100.00, Beans.jpg",
-"Golden Crown Jalapeno Slices 680gm - Rs. 80.00, Olives Jalapenoes & Canned Products.jpg",
+"Golden Crown Jalapeno Slices 680gm - Rs. 80.00, Canned & Imported Items.jpg",
 "Golden Crown MSG - Rs. 100.00, Masale.jpg",
 "Golden Crown Pineapple Slice 850gm - Rs. 180.00, Canned & Imported Items.jpg",
 "Habit Artichokes 390gm - Rs. 280.00, Canned & Imported Items.jpg",
@@ -158,6 +158,7 @@ const images = [
 "Godrej Yummiez Chicken Seekh Kabab 360g - Rs. 275.00, Frozen Non-Veg Snacks.jpg",
 "Veggie Fresh Frozen Green Peas 1kg - Rs. 180.00, Frozen Vegetables.jpg",
 ];
+
 
 
 
