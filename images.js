@@ -30,9 +30,9 @@ const images = [
 "Dr Oetker Funfoods Salad Mayonnaise 1kg - Rs. 150.00, Mayonnaise.jpg",
 "Dr Oetker Italian Style Pasta And Pizza Sauce No Onion No Garlic 1kg - Rs. 150.00, Sauce.jpg",
 "Dr Oetker Veg Mayonnaise Smoky Peri Peri 1kg - Rs. 150.00, Mayonnaise.jpg",
-"Finosta Fusilli Pasta - Rs. 150.00, Pasta.jpg",
-"Finosta Penne Pasta - Rs. 150.00, Pasta.jpg",
-"Finosta Spaghetti Pasta - Rs. 150.00, Pasta.jpg",
+"Finosta Fusilli Pasta - Rs. 150.00, Pasta & Noodles.jpg",
+"Finosta Penne Pasta - Rs. 150.00, Pasta & Noodles.jpg",
+"Finosta Spaghetti Pasta - Rs. 150.00, Pasta & Noodles.jpg",
 "Food Coast Mayo Lite 1 kg - Rs. 150.00, Mayonnaise.jpg",
 "Fresh 2 Go Ambient 8.5 Inch Plain Tortilla (RTC) 480gm (Pack of 10) - Rs. 75.00, Tortila.jpg",
 "Fresh 2 Go Ambient 10 Inch Plain Tortilla Wrap (RTC) 640gm (Pack of 10) - Rs. 105.00, Tortila.jpg",
@@ -108,7 +108,7 @@ const images = [
 "Nature Smith Smoked Paprika Powder 400g - Rs. 200.00, Maslae.jpg",
 "NATURESMITH PAPRIKA POWDER 400g - Rs. 200.00, Maslae.jpg",
 "Nestle KitKat - Rs. 200.00, Chocolate.jpg",
-"Nestle Maggi - Rs. 14.00, Noodles.jpg",
+"Nestle Maggi - Rs. 14.00, Pasta & Noodles.jpg",
 "Nestle Munch Crunchilicious Milk Chocolate 48Pc Box Pack 450 Gram - Rs. 450.00, Chocolate.jpg",
 "Noriko Rice Vinegar 620ml - Rs. 150.00, Japanese Thai & Oriental.jpg",
 "Noriko Roasted Nori (Seaweed) 140gm (Pack of 50) - Rs. 700.00, Japanese Thai & Oriental.jpg",
@@ -158,6 +158,7 @@ const images = [
 "Godrej Yummiez Chicken Seekh Kabab 360g - Rs. 275.00, Frozen Non-Veg Snacks.jpg",
 "Veggie Fresh Frozen Green Peas 1kg - Rs. 180.00, Frozen Vegetables.jpg",
 ];
+
 
 
 
