@@ -122,6 +122,16 @@ var seoByCategory = {
 			"High-quality disposable supplies for HoReCa. Shop bulk eco-friendly containers, cutlery, napkins, and takeaway packaging. Fast delivery and competitive wholesale pricing.",
 	};
 
+  setTimeout(function () {
+  var hash = window.location.hash;
+  if (hash.startsWith("#brand=")) {
+    var brand = hash.replace("#brand=", "");
+    var el = document.getElementById("brand-" + brand);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+}, 300);
 
   /* ===== CATEGORY FILTER ===== */
   var cats = [];
@@ -381,18 +391,6 @@ card.setAttribute("data-brand", p.brand);
   categoryFilter.onchange = render;
 
   render();
-  
-  setTimeout(function () {
-  var hash = window.location.hash;
-  if (hash.startsWith("#brand=")) {
-    var brand = hash.replace("#brand=", "");
-    var el = document.getElementById("brand-" + brand);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }
-}, 300);
-
   
 });
 
