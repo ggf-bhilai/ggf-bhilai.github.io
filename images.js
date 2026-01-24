@@ -45,7 +45,6 @@ const images = [
 "Go Cheese Slices 750g + 50 g Free (50 pcs x 16 g) - Rs. 250.00, Cheese.jpg",
 "Go filler cheese 500g - Rs. 150.00, Cheese.jpg",
 "Gochujang (Korean) CBL Hot Pepper Paste 500gm - Rs. 300.00, Japanese Thai & Oriental.jpg",
-"Godrej Yummiez Cheesy Pizza Finger - Rs. 350.00, Frozen Veg Snacks.jpg",
 "Godrej Yummiez Chicken Burger 300gm - Rs. 210.00, Frozen Non-Veg Snacks.jpg",
 "Godrej Yummiez Chicken Nuggets 500gm - Rs. 346.00, Frozen Non-Veg Snacks.jpg",
 "Godrej Yummiez Chilli Garlic Potato Bites 420g - Rs. 125.00, Frozen Veg Snacks.jpg",
@@ -160,5 +159,6 @@ const images = [
 "Godrej Yummiez Chicken Seekh Kabab 360g - Rs. 275.00, Frozen Non-Veg Snacks.jpg",
 "Veggie Fresh Frozen Green Peas 1kg - Rs. 180.00, Frozen Vegetables.jpg",
 ];
+
 
 
