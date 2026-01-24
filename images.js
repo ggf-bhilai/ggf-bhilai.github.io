@@ -81,7 +81,6 @@ const images = [
 "McCain Aloo Tikki 1.5Kg - Rs. 250.00, Frozen Veg Snacks.jpg",
 "McCain Cheese Triangle Pizza Style Filling 4x540gm - Rs. 800.00, Frozen Veg Snacks.jpg",
 "McCain Crinkle Cut Fries 2.5kg - Rs. 350.00, Frozen Veg Snacks.jpg",
-"McCain CrispOns - Rs. 200.00, Frozen Veg Snacks.jpg",
 "McCain CrispOns (Onion Rings) 1kg - Rs. 300.00, Frozen Veg Snacks.jpg",
 "McCain Favorita French Fries 6mm 2.5Kg - Rs. 380.00, Frozen Veg Snacks.jpg",
 "McCain Favorita French Fries 9mm 2.5 Kg - Rs. 300, Frozen Veg Snacks.jpg",
@@ -161,5 +160,6 @@ const images = [
 "Godrej Yummiez Chicken Seekh Kabab 360g - Rs. 275.00, Frozen Non-Veg Snacks.jpg",
 "Veggie Fresh Frozen Green Peas 1kg - Rs. 180.00, Frozen Vegetables.jpg",
 ];
+
 
 
