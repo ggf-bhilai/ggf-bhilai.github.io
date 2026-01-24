@@ -60,14 +60,18 @@ document.addEventListener("DOMContentLoaded", function () {
       category: category,
       price: price,
       qty: 0
+	  brand: name.split(" ")[0].toLowerCase()   // 👈 BRAND
     });
   });
 
   products.sort(function (a, b) {
-    return a.name.localeCompare(b.name);
-  });
+  if (a.brand !== b.brand) {
+    return a.brand.localeCompare(b.brand);
+  }
+  return a.name.localeCompare(b.name);
+});
 
-	var seoByCategory = {
+var seoByCategory = {
 		"Frozen Vegetables":
 			"Buy premium frozen vegetables wholesale from Geetanjali Good Foods, Bhilai. Frozen peas, sweet corn & more.",
 		"Frozen Veg Snacks":
@@ -163,6 +167,14 @@ document.addEventListener("DOMContentLoaded", function () {
       var card = document.createElement("div");
       card.className = "card";
 
+var brandId = "brand-" + p.brand;
+var prev = grid.lastElementChild;
+
+if (!prev || prev.getAttribute("data-brand") !== p.brand) {
+  card.setAttribute("id", brandId);
+}
+card.setAttribute("data-brand", p.brand);
+		
       card.innerHTML =
         '<img src="products/' + p.file + '" ' +
         'alt="' + p.name + ' | Veggie Fresh by Geetanjali Good Foods" ' +
@@ -370,3 +382,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
   render();
 });
+
