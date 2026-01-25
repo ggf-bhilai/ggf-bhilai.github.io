@@ -58,7 +58,6 @@ const images = [
 "Habit Classic Penne Rigate Pasta (Premium) 500gm - Rs. 120.00, Pasta & Noodles.jpg",
 "Habit Fruit Cocktail 850gm - Rs. 180.00, Canned & Imported Items.jpg",
 "Habit Green Olives Pitted 2.85Kg - Rs. 880.00, Canned & Imported Items.jpg",
-"Habit Green Pitted Olives 430gm - Rs. 180.00, Canned & Imported Items.jpg",
 "Habit Lemon Juice Concentrate 1L - Rs. 140.00, Japanese Thai & Oriental.jpg",
 "Habit Olives Black Sliced 3Kg - Rs. 800.00, Canned & Imported Items.jpg",
 "Habit Pineapple Sliced 850gm - Rs. 180.00, Canned & Imported Items.jpg",
@@ -192,3 +191,4 @@ const images = [
 "Pou Chong Kim Dark Soy Sauce 700g - Rs. 80.00, Sauce Ketchup and Mayonnaise.jpg",
 "Cremica Caterstar Veg Delight Mayonnaise 1Kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 ];
+
