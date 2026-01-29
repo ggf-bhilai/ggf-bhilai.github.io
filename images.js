@@ -33,7 +33,6 @@ const images = [
 "Finosta Fusilli Pasta - Rs. 150.00, Pasta & Noodles.jpg",
 "Finosta Penne Pasta - Rs. 150.00, Pasta & Noodles.jpg",
 "Finosta Spaghetti Pasta - Rs. 150.00, Pasta & Noodles.jpg",
-"Food Coast Mayo Lite 1 kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 "Fresh 2 Go Ambient 8.5 Inch Plain Tortilla (RTC) 480gm (Pack of 10) - Rs. 75.00, Tortila.jpg",
 "Fresh 2 Go Ambient 10 Inch Plain Tortilla Wrap (RTC) 640gm (Pack of 10) - Rs. 105.00, Tortila.jpg",
 "Frozen Basa Fillets - Rs. 2500.00, Frozen Fish.jpg",
@@ -117,7 +116,6 @@ const images = [
 "Finosta Puliro Panko Bread Crumb - Rs. 200.00, Bakery.jpg",
 "Springburst Aromatic Mix 500gm - Rs. 200.00, Masale.jpg",
 "Springburst Lime Seasoning 500gm - Rs. 200.00, Masale.jpg",
-"Sriraja Panich Chilli Sauce 570gm - Rs. 100.00, Sauce Ketchup and Mayonnaise.jpg",
 "Sunbay Fusilli Pasta 500gm - Rs. 60.00, Pasta & Noodles.jpg",
 "Sunbay Macaroni Pasta 500gm - Rs. 60.00, Pasta & Noodles.jpg",
 "Sunbay Pasta Penne Rigate 500gm - Rs. 60.00, Pasta & Noodles.jpg",
@@ -173,7 +171,6 @@ const images = [
 "Golden Crown Baked Beans In Sauce 450g - Rs. 80.00, Canned & Imported Items.jpg",
 "Golden Crown Coconut Cream - Rs. 200.00, Canned & Imported Items.jpg",
 "Golden Crown Panko Bread Crumbs 1Kg - Rs. 200.00, Bakery.jpg",
-"Golden Crown Pineapple Slice 850g - Rs. 200.00, Canned & Imported Items.jpg",
 "Golden Crown Red Cherry 850g - Rs. 200.00, Canned & Imported Items.jpg",
 "Golden Crown Sweet Corn Cream Style 450g - Rs. 200.00, Canned & Imported Items.jpg",
 "Golden Crown Sweet Corn Kernels 400g - Rs. 200.00, Canned & Imported Items.jpg",
@@ -284,4 +281,5 @@ const images = [
 "Nutralite Mayonnaise Lite 1kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 "Nutralite Professional Regular Mayo 1kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 ];
+
 
