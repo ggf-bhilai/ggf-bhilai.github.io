@@ -206,10 +206,25 @@ content="Veggie Fresh, Frozen Green Peas, Frozen Vegetables, Wholesale Frozen Fo
         </ul>
         <p>&copy; 2026 GGF Bhilai. All rights reserved.</p>
     </div>
+	 <div class="last-updated">
+                <p>Last Updated: <span id="lastUpdated"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Display last updated date
+        document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    </script>
 </footer>
 
 </body>
 </html>
+
 
 
 
