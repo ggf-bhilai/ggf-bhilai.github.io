@@ -287,7 +287,7 @@ const images = [
 "Sriraja Panich Chilli Sauce 570gm - Rs. 100.00, Sauce Ketchup and Mayonnaise.jpg",
 "Sriraja Panich Chilli Sauce 570gm - Rs. 100.00, Sauce.jpg",
 "SriRaja Panich Red Chili Sauce Hot 570g - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
-"Sugar Free Gold, 100 Sachet - Rs. 150.00, Bakery.jpg",
+"Sugar Free Gold 100 Sachet - Rs. 150.00, Bakery.jpg",
 "Sunbay Fusilli Pasta 500gm - Rs. 60.00, Pasta & Noodles.jpg",
 "Sunbay Macaroni Pasta 500gm - Rs. 60.00, Pasta & Noodles.jpg",
 "Sunbay Pasta Penne Rigate 500gm - Rs. 60.00, Pasta & Noodles.jpg",
@@ -320,3 +320,4 @@ const images = [
 "Yoka Shiitake Mushroom (Dried) 1 Kg - Rs. 1500.00, Japanese Thai & Oriental.jpg",
 "Yoka Sushi Vinegar 1.8L - Rs. 600.00, Japanese Thai & Oriental.jpg",
 ];
+
