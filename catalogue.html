@@ -77,9 +77,23 @@ content="Wholesale HoReCa food products by Geetanjali Good Foods, Bhilai. Frozen
     <span class="tooltip">Send on WhatsApp</span>
   </button>
 </div>
+<!-- Visitor Counter -->
+ <p>Visitors: <span id="visits">0</span></p>
+
+<script>
+fetch('https://api.countapi.xyz/hit/veggiefresh.in/catalogue')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('visits').innerText = data.value;
+  })
+  .catch(() => {
+    document.getElementById('visits').innerText = '—';
+  });
+</script>
 
 </body>
 </html>
+
 
 
 
