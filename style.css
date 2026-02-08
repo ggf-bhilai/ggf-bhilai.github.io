@@ -131,6 +131,59 @@ nav a {
   font-size: 13px;
 }
 
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 30px 0;
+    margin-top: 50px;
+    border-top: 2px solid #007bff;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-links li {
+    margin: 0;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: #007bff;
+}
+
+footer p {
+    margin: 10px 0;
+    font-size: 0.95em;
+}
+
+@media (max-width: 768px) {
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
 /* DESKTOP */
 @media (min-width: 768px) {
   .hero {
@@ -683,6 +736,7 @@ button:hover {
   font-weight: 600;
   font-size: 14px;
 }
+
 
 
 
