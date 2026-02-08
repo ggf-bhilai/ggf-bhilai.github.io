@@ -168,7 +168,7 @@ const images = [
 "Habit Button Mushroom Regular 800gm Rs. 180.00, Canned & Imported Items.jpg",
 "Habit Capers 100g - Rs. 200.00, Canned & Imported Items.jpg",
 "Habit Classic Penne Rigate Pasta (Premium) 500gm - Rs. 120.00, Pasta & Noodles.jpg",
-"Habit Coconut Milk 17% Fat 400ml - Rs. 180.00, Canned & Imported Items.jpg",
+"Habit Coconut Milk 400ml - Rs. 180.00, Canned & Imported Items.jpg",
 "Habit Fruit Cocktail 850gm - Rs. 180.00, Canned & Imported Items.jpg",
 "Habit Gherkins Whole 680g - Rs. 200.00, Canned & Imported Items.jpg",
 "Habit Green Olives Pitted 2.85Kg - Rs. 880.00, Canned & Imported Items.jpg",
@@ -320,4 +320,5 @@ const images = [
 "Yoka Shiitake Mushroom (Dried) 1 Kg - Rs. 1500.00, Japanese Thai & Oriental.jpg",
 "Yoka Sushi Vinegar 1.8L - Rs. 600.00, Japanese Thai & Oriental.jpg",
 ];
+
 
