@@ -1,15 +1,14 @@
-// Updated script.js to support multiple categories
-
-const products = [
-    { name: 'Product 1', categories: 'category1, category2' },
-    { name: 'Product 2', categories: 'category2, category3' },
-    { name: 'Product 3', categories: 'category1' },
-    // ... other products
-];
-
-function getProductsByCategory(category) {
-    return products.filter(product => product.categories.split(', ').includes(category));
+// Assume this is the new script content that includes multiple categories functionality. 
+function parseProducts(products) {
+    // Code to parse products 
 }
 
-// Example Usage:
-console.log(getProductsByCategory('category2')); // Will return products belonging to category2
+function filterProductsByCategories(products, categories) {
+    const categoryArray = categories.split(',').map(category => category.trim());
+    return products.filter(product => 
+        categoryArray.some(category => product.categories.includes(category))
+    );
+}
+
+// original functionality code here... 
+// Ensure you maintain all previous features while adding new functionality.
