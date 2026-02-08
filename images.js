@@ -1,7 +1,7 @@
 const images = [
-"Moshi Moshi Sushi Rice 1kg - Rs. 350.00, Canned & Imported Items, Japanese Thai & Oriental.jpg",
+"Moshi Moshi Sushi Rice 1kg - Rs. 350.00, Imported Items, Japanese Thai & Oriental.jpg",
 "Disposable Aluminium Foil Roll - Rs. 300.00, Disposable.jpg",
-"Urbani - White Truffle Oil 250ml - Rs. 1800, Canned & Imported Items.jpg",
+"Urbani - White Truffle Oil 250ml - Rs. 1800, Imported Items.jpg",
 "Hisashi Wasabi Paste 43g - Rs. 150.00, Canned & Imported Items.jpg",
 "Xinng Frozen Choco Lava Cake 9x80gm - Rs. 360.00, Frozen Bakery Products.jpg",
 "Xinng Frozen Walnut Brownie 1kg - Rs. 460.00, Frozen Bakery Products.jpg",
@@ -283,6 +283,7 @@ const images = [
 "Nutralite Mayonnaise Lite 1kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 "Nutralite Professional Regular Mayo 1kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 ];
+
 
 
 
