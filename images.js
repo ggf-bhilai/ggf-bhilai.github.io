@@ -1,4 +1,32 @@
 const images = [
+"DaVinci Davinci Gourmet Rose Flavored Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Blue Ocean Flavoured Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Blueberry Flavoured Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"Davinci Gourmet Caramel Syrup 750ml - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Cinnamon Flavoured Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Coconut Flavored Cocktail Syrup 750 ml - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Cranberry Flavoured Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Elderflower Flavoured Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Green Apple Flavored Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Lemon Tea Flavoured Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Mojito Flavoured Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Raspberry Flavored Cocktail Syrup 750 ML - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Red Velvet Cake Flavoured Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Strawberry Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Tropical Passionfruit Flavoured Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Gourmet Vanilla Flavour Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Peach Syrup 750ml - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Peach Tea Flavoured Syrup - Rs. 800.00, Syrups and Crushes.jpg",
+"DaVinci Pecan Praline Syrup 750ml - Rs. 800.00, Syrups and Crushes.jpg",
+"Everest Chat Masala - Rs. 70.00, Masale.jpg",
+"Everest Chicken Masala - Rs. 70.00, Masale.jpg",
+"Everest Chole Masala - Rs. 70.00, Masale.jpg",
+"Everest Kashmirilal Fine Ground Chilli Powder 500 Gm Pack - Rs. 70.00, Masale.jpg",
+"Everest Kitchen King Masala - Rs. 70.00, Masale.jpg",
+"Everest Masala Shahi Biryani - Rs. 70.00, Masale.jpg",
+"Everest Pav Bhaji Masala - Rs. 70.00, Masale.jpg",
+"Everest Shahi Paneer Masala - Rs. 70.00, Masale.jpg",
+"Everest Tandoori Chicken Masala - Rs. 70.00, Masale.jpg",
 "Aluminium Container with Lid 450ml (Pack of 100) - Rs. 400.00, Disposables.jpg",
 "Amul Butter 100gm - Rs. 60.00, Dairy Products.jpg",
 "Amul Cheese Cheese Slice 750g - Rs. 425.00, Cheese.jpg",
@@ -319,6 +347,7 @@ const images = [
 "Yoka Shiitake Mushroom (Dried) 1 Kg - Rs. 1500.00, Japanese Thai & Oriental.jpg",
 "Yoka Sushi Vinegar 1.8L - Rs. 600.00, Japanese Thai & Oriental.jpg",
 ];
+
 
 
 
