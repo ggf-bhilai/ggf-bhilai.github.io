@@ -1,25 +1,15 @@
-// Updated script.js to support multiple categories per product
+// Updated script.js to support multiple categories
 
 const products = [
-    // Example product structure
-    {
-        name: 'Product 1',
-        categories: 'electronics, gadgets',
-        price: 29.99,
-    },
-    {
-        name: 'Product 2',
-        categories: 'home, furniture',
-        price: 99.99,
-    }
+    { name: 'Product 1', categories: 'category1, category2' },
+    { name: 'Product 2', categories: 'category2, category3' },
+    { name: 'Product 3', categories: 'category1' },
+    // ... other products
 ];
 
-function displayProducts() {
-    products.forEach(product => {
-        console.log(`Name: ${product.name}`);
-        console.log(`Categories: ${product.categories}`);
-        console.log(`Price: $${product.price}`);
-    });
+function getProductsByCategory(category) {
+    return products.filter(product => product.categories.split(', ').includes(category));
 }
 
-displayProducts();
+// Example Usage:
+console.log(getProductsByCategory('category2')); // Will return products belonging to category2
