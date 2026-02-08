@@ -1,4 +1,5 @@
 const images = [
+  "Moshi Moshi Sushi Rice 1kg - Rs. 350.00, Canned & Imported Items.jpg"
 "Disposable Aluminium Foil Roll - Rs. 300.00, Disposable.jpg",
 "Urbani - White Truffle Oil 250ml - Rs. 1800, Canned & Imported Items.jpg",
 "Hisashi Wasabi Paste 43g - Rs. 150.00, Canned & Imported Items.jpg",
@@ -282,6 +283,7 @@ const images = [
 "Nutralite Mayonnaise Lite 1kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 "Nutralite Professional Regular Mayo 1kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 ];
+
 
 
 
