@@ -133,7 +133,6 @@ nav a {
 
 /* Footer Styling */
 footer {
-    background-color: #eee;
     color: black;
     padding: 30px 0;
     margin-top: 50px;
@@ -161,7 +160,6 @@ footer {
 }
 
 .footer-links a {
-    color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 500;
@@ -735,6 +733,7 @@ button:hover {
   font-weight: 600;
   font-size: 14px;
 }
+
 
 
 
