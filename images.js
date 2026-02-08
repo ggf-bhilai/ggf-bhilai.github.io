@@ -68,7 +68,6 @@ const images = [
 "Finosta Puliro American Bread Crumb - Rs. 200.00, Bakery.jpg",
 "Finosta Puliro Panko Bread Crumb - Rs. 200.00, Bakery.jpg",
 "Finosta Spaghetti Pasta - Rs. 150.00, Pasta & Noodles.jpg",
-"Food Coast Mayo Lite 1 kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 "FoodCoast Cheezy Dressing 1kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 "FoodCoast Chilli Garlic Sauce 1kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 "FoodCoast Chinese Sauce 1kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
@@ -320,5 +319,6 @@ const images = [
 "Yoka Shiitake Mushroom (Dried) 1 Kg - Rs. 1500.00, Japanese Thai & Oriental.jpg",
 "Yoka Sushi Vinegar 1.8L - Rs. 600.00, Japanese Thai & Oriental.jpg",
 ];
+
 
 
