@@ -427,5 +427,18 @@ card.setAttribute("data-file", p.file);
   categoryFilter.onchange = render;
 
   render();
-  
+
+const whatsappBtn = document.getElementById("sendWhatsapp");
+
+  if (whatsappBtn) {
+    whatsappBtn.addEventListener("click", () => {
+
+      gtag("event", "whatsapp_click", {
+        event_category: "engagement",
+        event_label: "Floating Cart WhatsApp Order"
+      });
+
+    });
+  }
+	
 });
