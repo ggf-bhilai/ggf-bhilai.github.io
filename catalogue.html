@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- ================================
+       BASIC SEO META
+  ================================= -->
+  <meta charset="UTF-8">
+
+  <title>VeggieFresh Product Catalogue | Wholesale HoReCa Bhilai</title>
+
+  <meta name="description"
+        content="Browse VeggieFresh wholesale frozen food products by Geetanjali Good Foods, Bhilai & Durg. Order easily on WhatsApp.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <!-- ================================
+       OPEN GRAPH (WhatsApp Preview)
+       FIXED for Proper Sharing
+  ================================= -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VeggieFresh – Geetanjali Good Foods">
+
+  <!-- IMPORTANT: Always canonical page URL -->
+  <meta property="og:url" content="https://veggiefresh.in/catalogue.html">
+
+  <meta property="og:title" content="VeggieFresh Wholesale Product Catalogue">
+  <meta property="og:description"
+        content="Frozen vegetables, sauces, snacks & HoReCa products in Bhilai & Durg.">
+
+  <!-- OG IMAGE must be FULL ABSOLUTE PATH -->
+  <meta property="og:image" content="https://veggiefresh.in/og-cover.jpg">
+  <meta property="og:image:secure_url" content="https://veggiefresh.in/og-cover.jpg">
+
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+
+  <!-- ================================
+       STYLESHEET
+  ================================= -->
+  <link rel="stylesheet" href="style.css">
+
+
+  <!-- ================================
+       GOOGLE ANALYTICS (Professional)
+  ================================= -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L43JSHPD0P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+
+    gtag("config", "G-L43JSHPD0P");
+  </script>
+
+
+  <!-- ================================
+       PRODUCT DATA + MAIN SCRIPT
+       MUST load after DOM
+  ================================= -->
+  <script src="images.js" defer></script>
+  <script src="script.js" defer></script>
+
+</head>
+
+
+<body>
+
+<!-- ================================
+     HEADER
+================================= -->
+<header class="header">
+
+  <div class="logo">
+    <a href="index.html">
+      <span class="brand-red">Veggie</span>
+      <span class="brand-green">Fresh</span>
+    </a>
+  </div>
+
+  <a class="whatsapp-btn"
+     href="https://wa.me/919074964418"
+     target="_blank">
+     WhatsApp Order
+  </a>
+
+</header>
+
+
+<!-- ================================
+     PAGE TITLE
+================================= -->
+<h1>VeggieFresh Product Catalogue</h1>
+
+
+<!-- ================================
+     SEARCH + CATEGORY FILTER
+================================= -->
+<div class="top-controls">
+
+  <input id="searchBox"
+         type="text"
+         placeholder="Search product, brand or category">
+
+  <!-- Category list auto-fill from script.js -->
+  <select id="categoryFilter">
+    <option value="all">All Categories</option>
+  </select>
+
+</div>
+
+
+<!-- ================================
+     PRODUCT GRID
+================================= -->
+<div id="catalogGrid" class="catalog-grid"></div>
+
+
+<!-- ================================
+     FLOATING CART PANEL
+================================= -->
+<div class="floating-cart">
+
+  <div class="cart-summary">
+    🛒 <span id="cartQty">0</span> items  
+    <div id="cartValue">₹ 0.00</div>
+  </div>
+
+
+  <!-- COPY ORDER BUTTON -->
+  <button id="copyOrder" class="icon-btn">
+    📋
+    <span class="tooltip">Copy Order</span>
+  </button>
+
+
+  <!-- WHATSAPP BUTTON -->
+  <button id="sendWhatsapp" class="icon-btn">
+
+    <!-- Round WhatsApp Icon -->
+    <img src="whatsapp.svg"
+         class="wa-icon"
+         alt="Send Order on WhatsApp">
+
+    <span class="tooltip">Send on WhatsApp</span>
+
+  </button>
+
+</div>
+
+
+<!-- ================================
+     VISITOR COUNTER (Optional)
+================================= -->
+<p class="visitor-counter">
+  Visitors: <span id="visits">Loading...</span>
+</p>
+
+<script>
+  fetch("https://api.countapi.xyz/hit/veggiefresh.in/catalogue")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("visits").innerText = data.value;
+    })
+    .catch(() => {
+      document.getElementById("visits").innerText = "—";
+    });
+</script>
+
+
+</body>
+</html>
