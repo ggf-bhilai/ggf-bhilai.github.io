@@ -428,7 +428,9 @@ card.setAttribute("data-file", p.file);
 
   render();
 
-const whatsappBtn = document.getElementById("sendWhatsapp");
+document.addEventListener("DOMContentLoaded", () => {
+
+  const whatsappBtn = document.getElementById("sendWhatsapp");
 
   if (whatsappBtn) {
     whatsappBtn.addEventListener("click", () => {
@@ -440,5 +442,8 @@ const whatsappBtn = document.getElementById("sendWhatsapp");
 
     });
   }
+
+});
+
 	
 });
