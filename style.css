@@ -256,6 +256,30 @@ footer p {
   transform: scale(1.08);
 }
 
+.product-detail-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-image {
+  width: 320px;
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.price-line {
+  font-size: 20px;
+  color: green;
+  font-weight: bold;
+}
+
+
 /* WHATSAPP BUTTON */
 .whatsapp {
   position: fixed;
