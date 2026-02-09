@@ -128,8 +128,12 @@ nav a {
   margin-top: 10px;
 }
 
-#qty-input {
-	width: 20px;
+.qty-input {
+  width: 40px;          /* 🔥 IMPORTANT */
+  height: 28px;
+  text-align: center;
+  font-size: 14px;
+  padding: 0;
 }
 
 /* FOOTER */
