@@ -1,82 +1,60 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* ============================================
-     STEP 1: CHECK images.js loaded
-  ============================================ */
-  if (typeof images === "undefined") {
-    alert("images.js not loaded");
-    return;
-  }
-
-  /* ============================================
-     STEP 2: GET PRODUCT NAME FROM URL
-     Example:
-     product.html?name=Amul Butter 100gm
-  ============================================ */
-  const params = new URLSearchParams(window.location.search);
-  const productName = params.get("name");
-
-  if (!productName) {
-    document.getElementById("productDetails").innerHTML =
-      "<h2>No Product Selected</h2>";
-    return;
-  }
-
-  /* ============================================
-     STEP 3: FIND MATCHING PRODUCT FILE
-  ============================================ */
-  const file = images.find(f =>
-    f.toLowerCase().includes(productName.toLowerCase())
-  );
+  /* ==========================================
+     STEP 1: Get File Name from URL
+  ========================================== */
+  var params = new URLSearchParams(window.location.search);
+  var file = params.get("file");
 
   if (!file) {
-    document.getElementById("productDetails").innerHTML =
-      "<h2>Product Not Found</h2>";
+    document.getElementById("productPage").innerHTML =
+      "<h2>Product not found</h2>";
     return;
   }
 
-  /* ============================================
-     STEP 4: EXTRACT DETAILS FROM FILENAME
+
+  /* ==========================================
+     STEP 2: Extract Product Info from Filename
      Format:
      Brand Product - Rs. Price, Category1, Category2.jpg
-  ============================================ */
-  const clean = file.replace(/\.(jpg|png|jpeg)$/i, "");
-  const parts = clean.split(",");
+  ========================================== */
+  var clean = file.replace(/\.(jpg|jpeg|png)$/i, "");
 
-  const namePricePart = parts[0].trim();
-  const categories = parts.slice(1).map(c => c.trim());
+  var parts = clean.split(",");
 
-  // Price Extract
-  let price = 0;
-  let name = namePricePart;
+  var namePricePart = parts[0].trim();
+  var categories = parts.slice(1).map(c => c.trim());
 
-  const match = namePricePart.match(/Rs\.?\s*([0-9]+(\.[0-9]+)?)/i);
+  var priceMatch =
+    namePricePart.match(/Rs\.?\s*([0-9]+(?:\.[0-9]{1,2})?)/i);
 
-  if (match) {
-    price = parseFloat(match[1]);
-    name = namePricePart.replace(match[0], "").replace("-", "").trim();
-  }
+  var price = priceMatch ? parseFloat(priceMatch[1]) : 0;
 
-  // Brand = first word
-  const brand = name.split(" ")[0];
+  var name = namePricePart
+    .replace(/-\s*Rs\.?\s*[0-9]+(?:\.[0-9]{1,2})?/i, "")
+    .trim();
 
-  /* ============================================
-     STEP 5: RENDER PRODUCT DETAILS
-  ============================================ */
-  const productBox = document.getElementById("productDetails");
+  var brand = name.split(" ")[0];
 
-  productBox.innerHTML = `
-    <div class="product-card">
+
+  /* ==========================================
+     STEP 3: Render Product Page
+  ========================================== */
+  var container = document.getElementById("productPage");
+
+  container.innerHTML = `
+    <div class="product-detail-card">
 
       <img class="product-image"
            src="products/${file}"
-           alt="${name} wholesale in Bhilai">
+           alt="${name}">
 
       <div class="product-info">
+
         <h1>${name}</h1>
 
         <p class="brand-line">
-          Brand: <strong>${brand}</strong>
+          Brand: <b>${brand}</b>
         </p>
 
         <p class="price-line">
@@ -87,19 +65,19 @@ document.addEventListener("DOMContentLoaded", function () {
           Categories: ${categories.join(", ")}
         </p>
 
-        <a class="order-btn"
-           target="_blank"
+        <a class="whatsapp-btn"
            href="https://wa.me/919074964418?text=${encodeURIComponent(
              "Hi, I want to order: " + name
-           )}">
-           Order on WhatsApp
+           )}"
+           target="_blank">
+           Order This Product
         </a>
-      </div>
 
+      </div>
     </div>
   `;
 
-  /* ============================================
+ /* ============================================
      STEP 6: SEO META + TITLE UPDATE
   ============================================ */
   document.title = `${name} | VeggieFresh Bhilai`;
@@ -109,61 +87,75 @@ document.addEventListener("DOMContentLoaded", function () {
     "content",
     `${name} by ${brand}. Wholesale HoReCa supply in Bhilai & Durg.`
   );
+  
+  /* ==========================================
+     STEP 4: Inject Google Merchant JSON-LD Schema
+  ========================================== */
+  injectSchema(name, brand, price, file);
 
-  /* ============================================
-     STEP 7: GOOGLE MERCHANT PRODUCT SCHEMA
-  ============================================ */
-  const schema = {
+
+  /* ==========================================
+     STEP 5: Related Products (Same Brand)
+  ========================================== */
+  showRelatedProducts(brand, file);
+
+});
+
+
+/* ==========================================
+   FUNCTION: Inject Schema
+========================================== */
+function injectSchema(name, brand, price, file) {
+
+  var schema = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": name,
+    "image": "https://veggiefresh.in/products/" + file,
     "brand": {
       "@type": "Brand",
       "name": brand
     },
-    "category": categories.join(", "),
-    "image": `https://veggiefresh.in/products/${encodeURIComponent(file)}`,
     "offers": {
       "@type": "Offer",
       "priceCurrency": "INR",
       "price": price,
       "availability": "https://schema.org/InStock",
-      "seller": {
-        "@type": "Organization",
-        "name": "Geetanjali Good Foods"
-      }
+      "url": window.location.href
     }
   };
 
-  const script = document.createElement("script");
+  var script = document.createElement("script");
   script.type = "application/ld+json";
   script.textContent = JSON.stringify(schema);
+
   document.head.appendChild(script);
+}
 
-  /* ============================================
-     STEP 8: RELATED PRODUCTS (Same Brand Grid)
-  ============================================ */
-  const relatedGrid = document.getElementById("relatedGrid");
 
-  images.forEach(f => {
+/* ==========================================
+   FUNCTION: Related Products Grid
+========================================== */
+function showRelatedProducts(brand, currentFile) {
 
-    if (f === file) return;
+  var grid = document.getElementById("relatedGrid");
 
-    if (!f.toLowerCase().startsWith(brand.toLowerCase())) return;
+  var related = images.filter(f =>
+    f.toLowerCase().startsWith(brand.toLowerCase()) &&
+    f !== currentFile
+  );
 
-    const card = document.createElement("div");
+  related.slice(0, 8).forEach(file => {
+
+    var card = document.createElement("div");
     card.className = "card";
 
     card.innerHTML = `
-      <a href="product.html?name=${encodeURIComponent(
-        f.split("-")[0].trim()
-      )}">
-        <img src="products/${f}" loading="lazy">
-        <div class="title">${f.split("-")[0]}</div>
+      <a href="product.html?file=${encodeURIComponent(file)}">
+        <img src="products/${file}" loading="lazy">
       </a>
     `;
 
-    relatedGrid.appendChild(card);
+    grid.appendChild(card);
   });
-
-});
+}
