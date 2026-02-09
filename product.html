@@ -3,18 +3,16 @@
 <head>
   <meta charset="UTF-8">
 
-  <title>Product | VeggieFresh</title>
-  <meta name="description" content="VeggieFresh Product Details">
+  <title>Product Details | VeggieFresh</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- DATA FILE -->
+  <!-- Load Image Data -->
   <script src="images.js" defer></script>
-
-  <!-- PRODUCT SCRIPT -->
   <script src="product.js" defer></script>
+
 </head>
 
 <body>
@@ -34,17 +32,18 @@
   </a>
 </header>
 
-<!-- PRODUCT PAGE -->
-<div class="product-page">
 
-  <!-- MAIN PRODUCT -->
-  <div id="productDetails"></div>
+<!-- ================================
+     PRODUCT DETAILS CONTAINER
+================================= -->
+<div id="productPage" class="product-page"></div>
 
-  <!-- RELATED PRODUCTS -->
-  <h2 class="related-title">More from this Brand</h2>
-  <div id="relatedGrid" class="catalog-grid"></div>
 
-</div>
+<!-- ================================
+     RELATED PRODUCTS
+================================= -->
+<h2 class="related-title">More From This Brand</h2>
+<div id="relatedGrid" class="catalog-grid"></div>
 
 </body>
 </html>
