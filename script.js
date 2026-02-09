@@ -1,14 +1,14 @@
 /* ============================================================
-   VeggieFresh Catalogue Script (Final Working Version)
+   VeggieFresh Catalogue Script (FINAL CLEAN VERSION)
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================================
-     1. SAFETY CHECK – images.js loaded?
+     1. SAFETY CHECK
   ============================================================ */
   if (typeof images === "undefined") {
-    alert("❌ images.js not loaded");
+    alert("❌ images.js not loaded!");
     return;
   }
 
@@ -26,14 +26,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const whatsappBtn = document.getElementById("sendWhatsapp");
 
   /* ============================================================
-     3. PRODUCT ARRAY
+     3. BRAND FILTER FROM INDEX PAGE
+     catalogue.html?brand=Amul
+  ============================================================ */
+  const params = new URLSearchParams(window.location.search);
+  const selectedBrand = params.get("brand");
+
+  /* ============================================================
+     4. PRODUCTS ARRAY
   ============================================================ */
   let products = [];
 
   /* ============================================================
-     4. FUNCTION: Parse Filename → Product Object
-     Format:
-     Brand, Product Name - Rs. Price, Category1, Category2.jpg
+     5. PARSE FILENAME → PRODUCT OBJECT
+     Example:
+     Amul, Butter 100gm - Rs. 60.00, Dairy Products.jpg
   ============================================================ */
   function parseFilename(file) {
 
@@ -46,12 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let rest = clean.slice(commaIndex + 1).trim();
 
     let parts = rest.split(" - Rs.");
-
     let name = parts[0].trim();
-    let pricePart = parts[1] || "";
 
-    let priceCats = pricePart.split(",");
-
+    let priceCats = (parts[1] || "").split(",");
     let price = parseFloat(priceCats[0]) || 0;
 
     let categories = priceCats
@@ -72,46 +76,35 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ============================================================
-     5. BUILD PRODUCTS LIST
+     6. BUILD PRODUCTS LIST FROM images.js
   ============================================================ */
   images.forEach(file => {
-    let product = parseFilename(file);
-    if (product) products.push(product);
+    let p = parseFilename(file);
+    if (p) products.push(p);
   });
 
+  /* Sort brand + product name */
   products.sort((a, b) => {
     if (a.brand !== b.brand) return a.brand.localeCompare(b.brand);
     return a.name.localeCompare(b.name);
   });
 
   /* ============================================================
-     6. CATEGORY FILTER BUILD
+     7. BUILD CATEGORY DROPDOWN
   ============================================================ */
   function buildCategoryFilter() {
 
-    let categorySet = new Set();
+    let set = new Set();
 
     products.forEach(p => {
-      p.categories.forEach(cat => categorySet.add(cat));
+      p.categories.forEach(cat => set.add(cat));
     });
 
     categoryFilter.innerHTML =
       `<option value="all">All Categories</option>` +
-      [...categorySet].sort().map(cat =>
+      [...set].sort().map(cat =>
         `<option value="${cat}">${cat}</option>`
       ).join("");
-  }
-
-  /* ============================================================
-     7. OPEN PRODUCT PAGE FUNCTION
-  ============================================================ */
-  function openProductPage(product) {
-
-    let url =
-      "product.html?file=" +
-      encodeURIComponent(product.file);
-
-    window.location.href = url;
   }
 
   /* ============================================================
@@ -128,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     cartQtySpan.textContent = totalQty;
-    cartValueEl.textContent = "Rs. " + totalValue.toFixed(2);
+    cartValueEl.textContent = "₹ " + totalValue.toFixed(2);
   }
 
   /* ============================================================
@@ -139,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let selected = products.filter(p => p.qty > 0);
     if (selected.length === 0) return null;
 
-    let text = "🛒 Order List:\n\n";
+    let text = "🛒 VeggieFresh Order List:\n\n";
 
     selected.forEach((p, i) => {
       text += `${i + 1}. ${p.name} (${p.brand}) x ${p.qty}\n`;
@@ -149,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ============================================================
-     10. PRODUCT SCHEMA JSON-LD
+     10. GOOGLE MERCHANT JSON-LD SCHEMA
   ============================================================ */
   function injectSchema() {
 
@@ -163,14 +156,16 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     products.forEach((p, i) => {
-
       schema.itemListElement.push({
         "@type": "ListItem",
         "position": i + 1,
         "item": {
           "@type": "Product",
           "name": p.name,
-          "brand": { "@type": "Brand", "name": p.brand },
+          "brand": {
+            "@type": "Brand",
+            "name": p.brand
+          },
           "category": p.categories.join(", "),
           "image": "https://veggiefresh.in/products/" + encodeURIComponent(p.file),
           "offers": {
@@ -181,7 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
       });
-
     });
 
     let script = document.createElement("script");
@@ -204,46 +198,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
     products.forEach(p => {
 
-      if (
-        search &&
-        !p.name.toLowerCase().includes(search) &&
-        !p.brand.toLowerCase().includes(search)
-      ) return;
+      /* BRAND FILTER from index.html */
+      if (selectedBrand &&
+          p.brand.toLowerCase() !== selectedBrand.toLowerCase()) {
+        return;
+      }
 
-      if (
-        catVal !== "all" &&
-        !p.categories.includes(catVal)
-      ) return;
+      /* SEARCH FILTER */
+      if (search &&
+          !p.name.toLowerCase().includes(search) &&
+          !p.brand.toLowerCase().includes(search)) {
+        return;
+      }
 
+      /* CATEGORY FILTER */
+      if (catVal !== "all" && !p.categories.includes(catVal)) {
+        return;
+      }
+
+      /* CARD */
       let card = document.createElement("div");
       card.className = "card";
 
       card.innerHTML = `
-        <img class="product-img"
-             src="products/${p.file}"
+        <img src="products/${p.file}"
              alt="${p.name} | ${p.brand}"
              loading="lazy">
 
         <h2 class="title">${p.name}</h2>
         <div class="brand">${p.brand}</div>
-
-        <div class="price">Rs. ${p.price.toFixed(2)}</div>
+        <div class="price">₹ ${p.price.toFixed(2)}</div>
 
         <div class="qty-controls">
           <button class="minus">−</button>
-          <input class="qty-input" value="${p.qty}" />
+          <input class="qty-input" type="number" value="${p.qty}">
           <button class="plus">+</button>
         </div>
       `;
 
-      /* ✅ CLICK TO OPEN PRODUCT PAGE */
-      let imgEl = card.querySelector(".product-img");
-      let titleEl = card.querySelector(".title");
-
-      imgEl.onclick = () => openProductPage(p);
-      titleEl.onclick = () => openProductPage(p);
-
-      /* Quantity Buttons */
       let minus = card.querySelector(".minus");
       let plus = card.querySelector(".plus");
       let qtyInput = card.querySelector(".qty-input");
@@ -269,6 +261,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     injectSchema();
+
+    /* AUTO SCROLL TO BRAND */
+    if (selectedBrand) {
+      setTimeout(() => {
+        let first = document.querySelector(".card");
+        if (first) first.scrollIntoView({ behavior: "smooth" });
+      }, 400);
+    }
   }
 
   /* ============================================================
@@ -276,15 +276,14 @@ document.addEventListener("DOMContentLoaded", function () {
   ============================================================ */
   copyBtn.onclick = () => {
     let text = buildOrderText();
-    if (!text) return alert("No items selected");
-
+    if (!text) return alert("❌ No items selected");
     navigator.clipboard.writeText(text);
     alert("✅ Order Copied!");
   };
 
   whatsappBtn.onclick = () => {
     let text = buildOrderText();
-    if (!text) return alert("No items selected");
+    if (!text) return alert("❌ No items selected");
 
     window.open(
       "https://wa.me/919074964418?text=" + encodeURIComponent(text),
