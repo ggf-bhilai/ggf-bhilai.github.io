@@ -267,6 +267,29 @@ document.addEventListener("DOMContentLoaded", function () {
     injectSchema();
   }
 
+/* ==========================================
+   FUNCTION: Open Product Page
+   जब user product पर click करे
+========================================== */
+function openProductPage(product) {
+
+  // File name URL-safe बनाना
+  var url =
+    "product.html?file=" +
+    encodeURIComponent(product.file);
+
+  window.location.href = url;
+}
+imgEl.onclick = function () {
+  openProductPage(p);
+};
+
+titleEl.onclick = function () {
+  openProductPage(p);
+};
+
+
+
   /* ============================================================
      11. BUTTON ACTIONS
   ============================================================ */
