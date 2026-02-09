@@ -271,6 +271,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+
+if (selectedBrand) {
+  setTimeout(() => {
+    let firstCard = document.querySelector(".card");
+    if (firstCard) {
+      firstCard.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, 500);
+}
+
   /* ============================================================
      12. BUTTON ACTIONS
   ============================================================ */
