@@ -40,7 +40,7 @@ const images = [
 "Amul Pure Milk Cheese Block 1kg - Rs. 545.00, Cheese.jpg",
 "Amul Taaza Homogenised Toned Milk 1Ltr - Rs. 75.00, Milk.jpg",
 "Ananda Cow Milk UHT 1Ltr - Rs. 72.00, Milk.jpg",
-"Ananda Cream UHT Pack 1Ltr, Rs. 220.00, Fresh Cream.jpg",
+"Ananda Cream UHT Pack 1Ltr - Rs. 220.00, Fresh Cream.jpg",
 "Ananda Gold Milk 1Ltr - Rs. 79.00, Milk.jpg",
 "Blue Tokai Coffee Roaster Beans 1kg - Rs. 550.00, Coffee.jpg",
 "Blue Valley Instant Dry Yeast 500gm - Rs. 200.00, Bakery.jpg",
@@ -348,6 +348,7 @@ const images = [
 "Yoka Shiitake Mushroom (Dried) 1 Kg - Rs. 1500.00, Japanese Thai & Oriental.jpg",
 "Yoka Sushi Vinegar 1.8L - Rs. 600.00, Japanese Thai & Oriental.jpg",
 ];
+
 
 
 
