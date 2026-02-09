@@ -1,17 +1,5 @@
 /* ============================================================
-   VeggieFresh Catalogue Script (Clean Final Version)
-   ------------------------------------------------------------
-   WORKFLOW:
-   products/
-     Brand Name, Product Name - Rs. Price, Category1, Category2.jpg
-
-   FEATURES:
-   ✅ Auto product parsing from filename
-   ✅ Brand-wise sorting + scroll support
-   ✅ Category filter (multi-category safe)
-   ✅ Quantity + Floating Cart auto update
-   ✅ Copy Order + WhatsApp Order working
-   ✅ Google Merchant Product Schema JSON-LD
+   VeggieFresh Catalogue Script (Final Working Version)
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -44,27 +32,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ============================================================
      4. FUNCTION: Parse Filename → Product Object
-     Brand = everything before first comma
+     Format:
+     Brand, Product Name - Rs. Price, Category1, Category2.jpg
   ============================================================ */
   function parseFilename(file) {
 
     let clean = file.replace(/\.(jpg|jpeg|png)$/i, "");
 
-    // Find first comma → Brand separator
     let commaIndex = clean.indexOf(",");
     if (commaIndex === -1) return null;
 
     let brand = clean.slice(0, commaIndex).trim();
     let rest = clean.slice(commaIndex + 1).trim();
 
-    // Split Product and Price part
     let parts = rest.split(" - Rs.");
 
     let name = parts[0].trim();
     let pricePart = parts[1] || "";
 
-    // Price + Categories
     let priceCats = pricePart.split(",");
+
     let price = parseFloat(priceCats[0]) || 0;
 
     let categories = priceCats
@@ -92,14 +79,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (product) products.push(product);
   });
 
-  /* Sort Brand + Name */
   products.sort((a, b) => {
     if (a.brand !== b.brand) return a.brand.localeCompare(b.brand);
     return a.name.localeCompare(b.name);
   });
 
   /* ============================================================
-     6. BUILD CATEGORY FILTER
+     6. CATEGORY FILTER BUILD
   ============================================================ */
   function buildCategoryFilter() {
 
@@ -116,30 +102,20 @@ document.addEventListener("DOMContentLoaded", function () {
       ).join("");
   }
 
+  /* ============================================================
+     7. OPEN PRODUCT PAGE FUNCTION
+  ============================================================ */
+  function openProductPage(product) {
 
-/* ==========================================
-   FUNCTION: Open Product Page
-   जब user product पर click करे
-========================================== */
-function openProductPage(product) {
+    let url =
+      "product.html?file=" +
+      encodeURIComponent(product.file);
 
-  // File name URL-safe बनाना
-  var url =
-    "product.html?file=" +
-    encodeURIComponent(product.file);
-
-  window.location.href = url;
-}
-imgEl.onclick = function () {
-  openProductPage(p);
-};
-
-titleEl.onclick = function () {
-  openProductPage(p);
-};
+    window.location.href = url;
+  }
 
   /* ============================================================
-     7. UPDATE FLOATING CART
+     8. UPDATE FLOATING CART
   ============================================================ */
   function updateCart() {
 
@@ -156,7 +132,7 @@ titleEl.onclick = function () {
   }
 
   /* ============================================================
-     8. BUILD ORDER TEXT
+     9. BUILD ORDER TEXT
   ============================================================ */
   function buildOrderText() {
 
@@ -173,7 +149,7 @@ titleEl.onclick = function () {
   }
 
   /* ============================================================
-     9. PRODUCT SCHEMA JSON-LD (Google Merchant)
+     10. PRODUCT SCHEMA JSON-LD
   ============================================================ */
   function injectSchema() {
 
@@ -217,7 +193,7 @@ titleEl.onclick = function () {
   }
 
   /* ============================================================
-     10. RENDER PRODUCTS GRID
+     11. RENDER PRODUCT GRID
   ============================================================ */
   function renderCatalogue() {
 
@@ -228,14 +204,12 @@ titleEl.onclick = function () {
 
     products.forEach(p => {
 
-      // Search filter
       if (
         search &&
         !p.name.toLowerCase().includes(search) &&
         !p.brand.toLowerCase().includes(search)
       ) return;
 
-      // Category filter
       if (
         catVal !== "all" &&
         !p.categories.includes(catVal)
@@ -245,7 +219,8 @@ titleEl.onclick = function () {
       card.className = "card";
 
       card.innerHTML = `
-        <img src="products/${p.file}"
+        <img class="product-img"
+             src="products/${p.file}"
              alt="${p.name} | ${p.brand}"
              loading="lazy">
 
@@ -261,6 +236,14 @@ titleEl.onclick = function () {
         </div>
       `;
 
+      /* ✅ CLICK TO OPEN PRODUCT PAGE */
+      let imgEl = card.querySelector(".product-img");
+      let titleEl = card.querySelector(".title");
+
+      imgEl.onclick = () => openProductPage(p);
+      titleEl.onclick = () => openProductPage(p);
+
+      /* Quantity Buttons */
       let minus = card.querySelector(".minus");
       let plus = card.querySelector(".plus");
       let qtyInput = card.querySelector(".qty-input");
@@ -278,8 +261,7 @@ titleEl.onclick = function () {
       };
 
       qtyInput.onchange = () => {
-        let val = parseInt(qtyInput.value) || 0;
-        p.qty = val;
+        p.qty = parseInt(qtyInput.value) || 0;
         updateCart();
       };
 
@@ -290,11 +272,12 @@ titleEl.onclick = function () {
   }
 
   /* ============================================================
-     11. BUTTON ACTIONS
+     12. BUTTON ACTIONS
   ============================================================ */
   copyBtn.onclick = () => {
     let text = buildOrderText();
     if (!text) return alert("No items selected");
+
     navigator.clipboard.writeText(text);
     alert("✅ Order Copied!");
   };
@@ -310,7 +293,7 @@ titleEl.onclick = function () {
   };
 
   /* ============================================================
-     12. INIT
+     13. INIT
   ============================================================ */
   buildCategoryFilter();
   renderCatalogue();
