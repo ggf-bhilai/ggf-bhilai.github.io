@@ -1,20 +1,20 @@
 /* ============================================================
-   VeggieFresh Catalogue Script (FINAL CLEAN VERSION)
+   VeggieFresh Catalogue Script (FINAL WORKING VERSION)
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* ============================================================
+  /* ==============================
      1. SAFETY CHECK
-  ============================================================ */
+  ============================== */
   if (typeof images === "undefined") {
     alert("❌ images.js not loaded!");
     return;
   }
 
-  /* ============================================================
+  /* ==============================
      2. DOM ELEMENTS
-  ============================================================ */
+  ============================== */
   const grid = document.getElementById("catalogGrid");
   const searchBox = document.getElementById("searchBox");
   const categoryFilter = document.getElementById("categoryFilter");
@@ -25,23 +25,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const copyBtn = document.getElementById("copyOrder");
   const whatsappBtn = document.getElementById("sendWhatsapp");
 
-  /* ============================================================
-     3. BRAND FILTER FROM INDEX PAGE
+  /* ==============================
+     3. BRAND FILTER PARAM
      catalogue.html?brand=Amul
-  ============================================================ */
+  ============================== */
   const params = new URLSearchParams(window.location.search);
   const selectedBrand = params.get("brand");
 
-  /* ============================================================
+  /* ==============================
      4. PRODUCTS ARRAY
-  ============================================================ */
+  ============================== */
   let products = [];
 
-  /* ============================================================
-     5. PARSE FILENAME → PRODUCT OBJECT
-     Example:
-     Amul, Butter 100gm - Rs. 60.00, Dairy Products.jpg
-  ============================================================ */
+  /* ==============================
+     5. PARSE PRODUCT FROM FILENAME
+     Amul, Butter 100gm - Rs. 60, Dairy Products.jpg
+  ============================== */
   function parseFilename(file) {
 
     let clean = file.replace(/\.(jpg|jpeg|png)$/i, "");
@@ -75,23 +74,22 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 
-  /* ============================================================
-     6. BUILD PRODUCTS LIST FROM images.js
-  ============================================================ */
+  /* ==============================
+     6. BUILD PRODUCT LIST
+  ============================== */
   images.forEach(file => {
     let p = parseFilename(file);
     if (p) products.push(p);
   });
 
-  /* Sort brand + product name */
   products.sort((a, b) => {
     if (a.brand !== b.brand) return a.brand.localeCompare(b.brand);
     return a.name.localeCompare(b.name);
   });
 
-  /* ============================================================
-     7. BUILD CATEGORY DROPDOWN
-  ============================================================ */
+  /* ==============================
+     7. CATEGORY FILTER BUILD
+  ============================== */
   function buildCategoryFilter() {
 
     let set = new Set();
@@ -107,13 +105,9 @@ document.addEventListener("DOMContentLoaded", function () {
       ).join("");
   }
 
-
-
-
-
-  /* ============================================================
-     8. UPDATE FLOATING CART
-  ============================================================ */
+  /* ==============================
+     8. UPDATE CART
+  ============================== */
   function updateCart() {
 
     let totalQty = 0;
@@ -128,9 +122,9 @@ document.addEventListener("DOMContentLoaded", function () {
     cartValueEl.textContent = "₹ " + totalValue.toFixed(2);
   }
 
-  /* ============================================================
-     9. BUILD ORDER TEXT
-  ============================================================ */
+  /* ==============================
+     9. ORDER TEXT
+  ============================== */
   function buildOrderText() {
 
     let selected = products.filter(p => p.qty > 0);
@@ -145,9 +139,18 @@ document.addEventListener("DOMContentLoaded", function () {
     return text;
   }
 
-  /* ============================================================
-     10. GOOGLE MERCHANT JSON-LD SCHEMA
-  ============================================================ */
+  /* ==============================
+     10. PRODUCT PAGE OPEN
+  ============================== */
+  function openProductPage(product) {
+    window.location.href =
+      "product.html?file=" +
+      encodeURIComponent(product.file);
+  }
+
+  /* ==============================
+     11. SCHEMA JSON-LD
+  ============================== */
   function injectSchema() {
 
     let old = document.getElementById("schema-products");
@@ -166,10 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "item": {
           "@type": "Product",
           "name": p.name,
-          "brand": {
-            "@type": "Brand",
-            "name": p.brand
-          },
+          "brand": { "@type": "Brand", "name": p.brand },
           "category": p.categories.join(", "),
           "image": "https://veggiefresh.in/products/" + encodeURIComponent(p.file),
           "offers": {
@@ -190,9 +190,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.head.appendChild(script);
   }
 
-  /* ============================================================
-     11. RENDER PRODUCT GRID
-  ============================================================ */
+  /* ==============================
+     12. RENDER CATALOGUE
+  ============================== */
   function renderCatalogue() {
 
     let search = searchBox.value.toLowerCase();
@@ -202,33 +202,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     products.forEach(p => {
 
-      /* BRAND FILTER from index.html */
       if (selectedBrand &&
-          p.brand.toLowerCase() !== selectedBrand.toLowerCase()) {
-        return;
-      }
+          p.brand.toLowerCase() !== selectedBrand.toLowerCase()) return;
 
-      /* SEARCH FILTER */
       if (search &&
           !p.name.toLowerCase().includes(search) &&
-          !p.brand.toLowerCase().includes(search)) {
-        return;
-      }
+          !p.brand.toLowerCase().includes(search)) return;
 
-      /* CATEGORY FILTER */
-      if (catVal !== "all" && !p.categories.includes(catVal)) {
-        return;
-      }
+      if (catVal !== "all" &&
+          !p.categories.includes(catVal)) return;
 
-      /* CARD */
       let card = document.createElement("div");
       card.className = "card";
 
       card.innerHTML = `
-        <img src="products/${p.file}"
-             alt="${p.name} | ${p.brand}"
-             loading="lazy">
-
+        <img src="products/${p.file}" loading="lazy">
         <h2 class="title">${p.name}</h2>
         <div class="brand">${p.brand}</div>
         <div class="price">₹ ${p.price.toFixed(2)}</div>
@@ -240,6 +228,17 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       `;
 
+      /* CLICK OPEN PRODUCT PAGE */
+      let imgEl = card.querySelector("img");
+      let titleEl = card.querySelector(".title");
+
+      imgEl.style.cursor = "pointer";
+      titleEl.style.cursor = "pointer";
+
+      imgEl.onclick = () => openProductPage(p);
+      titleEl.onclick = () => openProductPage(p);
+
+      /* QTY CONTROLS */
       let minus = card.querySelector(".minus");
       let plus = card.querySelector(".plus");
       let qtyInput = card.querySelector(".qty-input");
@@ -265,45 +264,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     injectSchema();
-
-    /* AUTO SCROLL TO BRAND */
-    if (selectedBrand) {
-      setTimeout(() => {
-        let first = document.querySelector(".card");
-        if (first) first.scrollIntoView({ behavior: "smooth" });
-      }, 400);
-    }
   }
 
-
-if (selectedBrand) {
-  setTimeout(() => {
-    let firstCard = document.querySelector(".card");
-    if (firstCard) {
-      firstCard.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, 500);
-}
-
-/* ==========================================
-   FUNCTION: Open Product Page
-   जब user product पर click करे
-========================================== */
-function openProductPage(product) {
-
-  // File name URL-safe बनाना
-  var url =
-    "product.html?file=" +
-    encodeURIComponent(product.file);
-
-  window.location.href = url;
-}
-
-
-
-  /* ============================================================
-     12. BUTTON ACTIONS
-  ============================================================ */
+  /* ==============================
+     13. BUTTON ACTIONS
+  ============================== */
   copyBtn.onclick = () => {
     let text = buildOrderText();
     if (!text) return alert("❌ No items selected");
@@ -319,22 +284,11 @@ function openProductPage(product) {
       "https://wa.me/919074964418?text=" + encodeURIComponent(text),
       "_blank"
     );
-	
-	imgEl.onclick = function () {
-  openProductPage(p);
-};
-
-titleEl.onclick = function () {
-  openProductPage(p);
-};
-
   };
-  
-  
 
-  /* ============================================================
-     13. INIT
-  ============================================================ */
+  /* ==============================
+     14. INIT
+  ============================== */
   buildCategoryFilter();
   renderCatalogue();
   updateCart();
