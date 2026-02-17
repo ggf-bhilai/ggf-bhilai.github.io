@@ -302,6 +302,30 @@ footer p {
   box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
+.wa-share {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-left: 6px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.wa-share:hover {
+  transform: scale(1.1);
+}
+
+.wa-icon-small {
+  width: 20px;
+  height: 20px;
+}
+
+
 /* ANIMATIONS */
 @keyframes riseUp {
   to {

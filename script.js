@@ -225,10 +225,40 @@ document.addEventListener("DOMContentLoaded", function () {
           <button class="minus">−</button>
           <input class="qty-input" type="number" value="${p.qty}">
           <button class="plus">+</button>
-        </div>
+
+        <!-- WhatsApp Share Button -->
+			<button class="wa-share" title="Share on WhatsApp">
+			<img src="whatsapp.svg" class="wa-icon-small">
+			</button>
+		</div>
       `;
 
       /* CLICK OPEN PRODUCT PAGE */
+
+/* WHATSAPP SHARE BUTTON */
+let waShareBtn = card.querySelector(".wa-share");
+
+waShareBtn.onclick = (e) => {
+  e.stopPropagation();
+
+  // Product Page Link
+  let productUrl =
+    "https://veggiefresh.in/product.html?file=" +
+    encodeURIComponent(p.file);
+
+  // WhatsApp Message
+  let message =
+    `Order "${p.brand} ${p.name}" from Geetanjali Good Foods\n\n` +
+    `View Product: ${productUrl}`;
+
+  // Open WhatsApp Share
+  window.open(
+    "https://wa.me/?text=" + encodeURIComponent(message),
+    "_blank"
+  );
+};
+
+
       let imgEl = card.querySelector("img");
       let titleEl = card.querySelector(".title");
 
