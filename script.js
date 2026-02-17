@@ -1,5 +1,5 @@
 /* ============================================================
-   VeggieFresh Catalogue Script (FINAL WORKING VERSION)
+   VeggieFresh Catalogue Script (FINAL CLEAN VERSION)
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -32,6 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const params = new URLSearchParams(window.location.search);
   const selectedBrand = params.get("brand");
 
+  // Heading Show (Safe)
+  const heading = document.getElementById("brandHeading");
+  if (selectedBrand && heading) {
+    heading.textContent =
+      "Showing all products from: " + selectedBrand;
+  }
+
   /* ==============================
      4. PRODUCTS ARRAY
   ============================== */
@@ -39,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ==============================
      5. PARSE PRODUCT FROM FILENAME
-     Amul, Butter 100gm - Rs. 60, Dairy Products.jpg
+     Amul, Butter 100gm - Rs. 60, Dairy.jpg
   ============================== */
   function parseFilename(file) {
 
@@ -149,49 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ==============================
-     11. SCHEMA JSON-LD
-  ============================== */
-  function injectSchema() {
-
-    let old = document.getElementById("schema-products");
-    if (old) old.remove();
-
-    let schema = {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "itemListElement": []
-    };
-
-    products.forEach((p, i) => {
-      schema.itemListElement.push({
-        "@type": "ListItem",
-        "position": i + 1,
-        "item": {
-          "@type": "Product",
-          "name": p.name,
-          "brand": { "@type": "Brand", "name": p.brand },
-          "category": p.categories.join(", "),
-          "image": "https://veggiefresh.in/products/" + encodeURIComponent(p.file),
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "INR",
-            "price": p.price,
-            "availability": "https://schema.org/InStock"
-          }
-        }
-      });
-    });
-
-    let script = document.createElement("script");
-    script.id = "schema-products";
-    script.type = "application/ld+json";
-    script.textContent = JSON.stringify(schema);
-
-    document.head.appendChild(script);
-  }
-
-  /* ==============================
-     12. RENDER CATALOGUE
+     11. RENDER CATALOGUE
   ============================== */
   function renderCatalogue() {
 
@@ -202,15 +167,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     products.forEach(p => {
 
+      // Brand Filter
       if (selectedBrand &&
-          p.brand.toLowerCase() !== selectedBrand.toLowerCase()) return;
+        p.brand.toLowerCase() !== selectedBrand.toLowerCase()) return;
 
+      // Search Filter
       if (search &&
-          !p.name.toLowerCase().includes(search) &&
-          !p.brand.toLowerCase().includes(search)) return;
+        !p.name.toLowerCase().includes(search) &&
+        !p.brand.toLowerCase().includes(search)) return;
 
+      // Category Filter
       if (catVal !== "all" &&
-          !p.categories.includes(catVal)) return;
+        !p.categories.includes(catVal)) return;
 
       let card = document.createElement("div");
       card.className = "card";
@@ -226,47 +194,36 @@ document.addEventListener("DOMContentLoaded", function () {
           <input class="qty-input" type="number" value="${p.qty}">
           <button class="plus">+</button>
 
-        <!-- WhatsApp Share Button -->
-			<button class="wa-share" title="Share on WhatsApp">
-			<img src="share.png" alt="WhatsApp">
-			</button>
-		</div>
+          <!-- WhatsApp Share Button -->
+          <button class="wa-share" title="Share on WhatsApp">
+            <img src="share.png" alt="WhatsApp">
+          </button>
+        </div>
       `;
 
-      /* CLICK OPEN PRODUCT PAGE */
+      /* OPEN PRODUCT PAGE */
+      card.querySelector("img").onclick = () => openProductPage(p);
+      card.querySelector(".title").onclick = () => openProductPage(p);
 
-/* WHATSAPP SHARE BUTTON */
-let waShareBtn = card.querySelector(".wa-share");
+      /* WHATSAPP SHARE */
+      let waShareBtn = card.querySelector(".wa-share");
 
-waShareBtn.onclick = (e) => {
-  e.stopPropagation();
+      waShareBtn.onclick = (e) => {
+        e.stopPropagation();
 
-  // Product Page Link
-  let productUrl =
-    "https://veggiefresh.in/product.html?file=" +
-    encodeURIComponent(p.file);
+        let productUrl =
+          "https://veggiefresh.in/product.html?file=" +
+          encodeURIComponent(p.file);
 
-  // WhatsApp Message
-  let message =
-    `Order "${p.brand} ${p.name}" from Geetanjali Good Foods\n\n` +
-    `View Product: ${productUrl}`;
+        let message =
+          `Order "${p.brand} ${p.name}" from Geetanjali Good Foods\n\n` +
+          `View Product: ${productUrl}`;
 
-  // Open WhatsApp Share
-  window.open(
-    "https://wa.me/?text=" + encodeURIComponent(message),
-    "_blank"
-  );
-};
-
-
-      let imgEl = card.querySelector("img");
-      let titleEl = card.querySelector(".title");
-
-      imgEl.style.cursor = "pointer";
-      titleEl.style.cursor = "pointer";
-
-      imgEl.onclick = () => openProductPage(p);
-      titleEl.onclick = () => openProductPage(p);
+        window.open(
+          "https://wa.me/?text=" + encodeURIComponent(message),
+          "_blank"
+        );
+      };
 
       /* QTY CONTROLS */
       let minus = card.querySelector(".minus");
@@ -274,20 +231,10 @@ waShareBtn.onclick = (e) => {
       let qtyInput = card.querySelector(".qty-input");
 
       minus.onclick = () => {
-
-		// अगर qty already 0 hai तो कुछ मत करो
-		if (p.qty <= 0) {
-		p.qty = 0;
-		qtyInput.value = 0;
-		return;
-		}
-
-		// Otherwise reduce
-		p.qty--;
-
-		qtyInput.value = p.qty;
-		updateCart();
-		};
+        if (p.qty > 0) p.qty--;
+        qtyInput.value = p.qty;
+        updateCart();
+      };
 
       plus.onclick = () => {
         p.qty++;
@@ -296,22 +243,24 @@ waShareBtn.onclick = (e) => {
       };
 
       qtyInput.onchange = () => {
-        p.qty = parseInt(qtyInput.value) || 0;
+        let val = parseInt(qtyInput.value) || 0;
+        if (val < 0) val = 0;
+        p.qty = val;
+        qtyInput.value = p.qty;
         updateCart();
       };
 
       grid.appendChild(card);
     });
-
-    injectSchema();
   }
 
   /* ==============================
-     13. BUTTON ACTIONS
+     12. BUTTON ACTIONS
   ============================== */
   copyBtn.onclick = () => {
     let text = buildOrderText();
     if (!text) return alert("❌ No items selected");
+
     navigator.clipboard.writeText(text);
     alert("✅ Order Copied!");
   };
@@ -321,13 +270,14 @@ waShareBtn.onclick = (e) => {
     if (!text) return alert("❌ No items selected");
 
     window.open(
-      "https://wa.me/919074964418?text=" + encodeURIComponent(text),
+      "https://wa.me/919074964418?text=" +
+      encodeURIComponent(text),
       "_blank"
     );
   };
 
   /* ==============================
-     14. INIT
+     13. INIT
   ============================== */
   buildCategoryFilter();
   renderCatalogue();
