@@ -38,7 +38,6 @@
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="logo">
     <a href="index.html">
@@ -46,7 +45,10 @@
       <span class="brand-green">Fresh</span>
     </a>
   </div>
-
+  <a class="whatsapp-btn"
+     href="catalogue.html">
+     View Catalogue
+  </a>
   <a class="whatsapp-btn"
      href="https://wa.me/919074964418"
      target="_blank">
@@ -91,23 +93,5 @@
   </button>
 
 </div>
-
-
-<!-- Visitor Counter -->
-<p style="text-align:center;">
-  Visitors: <span id="visits">0</span>
-</p>
-
-<script>
-fetch('https://api.countapi.xyz/hit/veggiefresh.in/catalogue')
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById('visits').innerText = data.value;
-  })
-  .catch(() => {
-    document.getElementById('visits').innerText = '—';
-  });
-</script>
-
 </body>
 </html>
