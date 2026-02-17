@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         <!-- WhatsApp Share Button -->
 			<button class="wa-share" title="Share on WhatsApp">
-			<img src="whatsapp.svg" class="wa-icon-small">
+			<img src="share.png" alt="WhatsApp">
 			</button>
 		</div>
       `;
@@ -274,10 +274,20 @@ waShareBtn.onclick = (e) => {
       let qtyInput = card.querySelector(".qty-input");
 
       minus.onclick = () => {
-        if (p.qty > 0) p.qty--;
-        qtyInput.value = p.qty;
-        updateCart();
-      };
+
+		// अगर qty already 0 hai तो कुछ मत करो
+		if (p.qty <= 0) {
+		p.qty = 0;
+		qtyInput.value = 0;
+		return;
+		}
+
+		// Otherwise reduce
+		p.qty--;
+
+		qtyInput.value = p.qty;
+		updateCart();
+		};
 
       plus.onclick = () => {
         p.qty++;

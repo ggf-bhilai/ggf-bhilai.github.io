@@ -293,8 +293,6 @@ footer p {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #25d366;
-  color: white;
   padding: 14px 18px;
   border-radius: 50px;
   text-decoration: none;
@@ -303,27 +301,26 @@ footer p {
 }
 
 .wa-share {
-  border: none;
-  background: none;
-  cursor: pointer;
-  margin-left: 6px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
+  background: #25D366;
+  border: none;
   display: flex;
-  align-items: center;
   justify-content: center;
-  transition: 0.2s;
+  align-items: center;
 }
+
+.wa-share img {
+  width: 18px;
+  height: 18px;
+}
+
 
 .wa-share:hover {
   transform: scale(1.1);
 }
 
-.wa-icon-small {
-  width: 20px;
-  height: 20px;
-}
 
 
 /* ANIMATIONS */
@@ -478,18 +475,7 @@ button:hover {
   cursor: pointer;
 }
 
-.qty-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 8px;
-}
 
-.qty-controls button {
-  padding: 4px 10px;
-  font-size: 16px;
-}
 /* FLOATING CART PANEL */
 #floatingCart {
   position: fixed;
@@ -660,8 +646,10 @@ button:hover {
 
 .qty-controls {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
+  margin-top: 8px;
 }
 
 .qty-controls button {
@@ -673,12 +661,21 @@ button:hover {
   color: #fff;
   font-size: 16px;
   cursor: pointer;
+  padding: 4px 10px;
 }
 
 .qty-controls span {
   min-width: 28px;
   text-align: center;
   font-weight: bold;
+}
+.qty-controls img {
+	width: 18px;
+	height: 18px;
+}
+
+.qty-controls button:hover {
+  transform: scale(1.1);
 }
 
 .share-btn {

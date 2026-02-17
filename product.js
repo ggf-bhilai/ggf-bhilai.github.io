@@ -1,59 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Product Details | VeggieFresh</title>
+document.addEventListener("DOMContentLoaded", function () {
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  // URL se file param lo
+  const params = new URLSearchParams(window.location.search);
+  const file = params.get("file");
 
-  <!-- Load images list -->
-  <script src="images.js" defer></script>
+  if (!file) {
+    document.getElementById("productName").textContent =
+      "❌ Product Not Found";
+    return;
+  }
 
-  <!-- Product page script -->
-  <script src="product.js" defer></script>
-</head>
+  // Filename parse function
+  function parseFilename(file) {
 
-<body>
+    let clean = file.replace(/\.(jpg|jpeg|png)$/i, "");
 
-<header class="header">
-  <div class="logo">
-    <a href="index.html">
-      <span class="brand-red">Veggie</span>
-      <span class="brand-green">Fresh</span>
-    </a>
-  </div>
+    let commaIndex = clean.indexOf(",");
+    if (commaIndex === -1) return null;
 
-  <a class="whatsapp-btn"
-     href="catalogue.html">
-     ← Back to Catalogue
-  </a>
-</header>
+    let brand = clean.slice(0, commaIndex).trim();
+    let rest = clean.slice(commaIndex + 1).trim();
 
-<!-- PRODUCT DETAILS -->
-<div class="product-page">
+    let parts = rest.split(" - Rs.");
+    let name = parts[0].trim();
 
-  <img id="productImage" class="product-image" src="" alt="">
+    let priceCats = (parts[1] || "").split(",");
+    let price = parseFloat(priceCats[0]) || 0;
 
-  <h1 id="productName">Loading...</h1>
+    let categories = priceCats
+      .slice(1)
+      .map(c => c.trim())
+      .filter(Boolean);
 
-  <p><b>Brand:</b> <span id="productBrand"></span></p>
-  <p><b>Category:</b> <span id="productCategory"></span></p>
-  <p><b>Price:</b> ₹ <span id="productPrice"></span></p>
+    if (categories.length === 0) categories = ["Others"];
 
-  <!-- ORDER BUTTON -->
-  <button id="orderBtn" class="order-btn">
-    Order This Product
-  </button>
+    return {
+      file,
+      brand,
+      name,
+      price,
+      categories
+    };
+  }
 
-</div>
+  // Product Data Extract
+  let product = parseFilename(file);
 
-<hr>
+  if (!product) {
+    document.getElementById("productName").textContent =
+      "❌ Invalid Product File";
+    return;
+  }
 
-<!-- RELATED PRODUCTS -->
-<h2 style="text-align:center;">More From This Brand</h2>
+  // DOM Elements Fill
+  document.getElementById("productImage").src =
+    "products/" + product.file;
 
-<div id="relatedGrid" class="catalog-grid"></div>
+  document.getElementById("productName").textContent =
+    product.name;
 
-</body>
-</html>
+  document.getElementById("productBrand").textContent =
+    product.brand;
+
+  document.getElementById("productCategory").textContent =
+    product.categories.join(", ");
+
+  document.getElementById("productPrice").textContent =
+    product.price.toFixed(2);
+
+  // Order Button
+  document.getElementById("orderBtn").onclick = function () {
+
+    let message =
+      `Hi,\n\nI want to order:\n` +
+      `"${product.brand} ${product.name}"\n\n` +
+      `From Geetanjali Good Foods\n\n` +
+      `Product Link:\nhttps://veggiefresh.in/product.html?file=${encodeURIComponent(product.file)}`;
+
+    window.open(
+      "https://wa.me/919074964418?text=" +
+      encodeURIComponent(message),
+      "_blank"
+    );
+  };
+
+});
