@@ -287,6 +287,41 @@ footer p {
   font-weight: bold;
 }
 
+.product-page {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  padding: 25px;
+}
+
+.product-left {
+  flex: 0 0 320px;
+}
+
+.product-right {
+  flex: 1;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 12px;
+  background: white;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .product-page {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .product-left {
+    flex: none;
+  }
+}
+
+
 
 /* WHATSAPP BUTTON */
 .whatsapp {
@@ -792,16 +827,57 @@ button:hover {
   font-size: 14px;
 }
 
+/* ==============================
+   RELATED PRODUCTS SLIDER
+============================== */
 
+.slider-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px;
+}
 
+.slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding: 10px;
+}
 
+.slider::-webkit-scrollbar {
+  display: none;
+}
 
+.slide-card {
+  min-width: 160px;
+  background: white;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: 0.2s;
+}
 
+.slide-card:hover {
+  transform: scale(1.05);
+}
 
+.slide-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+}
 
-
-
-
-
-
-
+.slide-btn {
+  border: none;
+  background: #25d366;
+  color: white;
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}

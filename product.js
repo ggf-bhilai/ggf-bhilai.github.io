@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  // URL se file param lo
+  // ==============================
+  // GET FILE PARAM
+  // ==============================
   const params = new URLSearchParams(window.location.search);
   const file = params.get("file");
 
@@ -10,7 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  // Filename parse function
+  // ==============================
+  // PARSE PRODUCT FROM FILENAME
+  // ==============================
   function parseFilename(file) {
 
     let clean = file.replace(/\.(jpg|jpeg|png)$/i, "");
@@ -43,7 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 
-  // Product Data Extract
+  // ==============================
+  // CURRENT PRODUCT DATA
+  // ==============================
   let product = parseFilename(file);
 
   if (!product) {
@@ -52,7 +58,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  // DOM Elements Fill
+  // ==============================
+  // FILL PRODUCT DETAILS
+  // ==============================
   document.getElementById("productImage").src =
     "products/" + product.file;
 
@@ -68,7 +76,9 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("productPrice").textContent =
     product.price.toFixed(2);
 
-  // Order Button
+  // ==============================
+  // ORDER BUTTON WHATSAPP
+  // ==============================
   document.getElementById("orderBtn").onclick = function () {
 
     let message =
@@ -83,5 +93,84 @@ document.addEventListener("DOMContentLoaded", function () {
       "_blank"
     );
   };
+
+  // ==============================
+  // RELATED PRODUCTS SLIDER
+  // ==============================
+  let relatedGrid = document.getElementById("relatedGrid");
+
+  if (typeof images !== "undefined") {
+
+    let related = [];
+
+    images.forEach(f => {
+      let p2 = parseFilename(f);
+
+      if (p2 &&
+          p2.brand.toLowerCase() === product.brand.toLowerCase() &&
+          p2.file !== product.file) {
+
+        related.push(p2);
+      }
+    });
+
+    // No related products
+    if (related.length === 0) {
+      relatedGrid.innerHTML =
+        "<p style='text-align:center;'>No more products from this brand.</p>";
+      return;
+    }
+
+    // ==============================
+    // BUILD SLIDER CONTAINER
+    // ==============================
+    relatedGrid.innerHTML = `
+      <div class="slider-wrap">
+
+        <button class="slide-btn left">‹</button>
+
+        <div class="slider" id="sliderTrack"></div>
+
+        <button class="slide-btn right">›</button>
+
+      </div>
+    `;
+
+    let sliderTrack = document.getElementById("sliderTrack");
+
+    // Add related product cards
+    related.slice(0, 12).forEach(item => {
+
+      let card = document.createElement("div");
+      card.className = "slide-card";
+
+      card.innerHTML = `
+        <img src="products/${item.file}" loading="lazy">
+        <h3>${item.name}</h3>
+        <p class="price">₹ ${item.price.toFixed(2)}</p>
+      `;
+
+      card.onclick = () => {
+        window.location.href =
+          "product.html?file=" + encodeURIComponent(item.file);
+      };
+
+      sliderTrack.appendChild(card);
+    });
+
+    // ==============================
+    // SLIDER BUTTONS WORKING
+    // ==============================
+    let leftBtn = document.querySelector(".slide-btn.left");
+    let rightBtn = document.querySelector(".slide-btn.right");
+
+    rightBtn.onclick = () => {
+      sliderTrack.scrollBy({ left: 250, behavior: "smooth" });
+    };
+
+    leftBtn.onclick = () => {
+      sliderTrack.scrollBy({ left: -250, behavior: "smooth" });
+    };
+  }
 
 });
