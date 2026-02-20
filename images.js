@@ -298,7 +298,7 @@ const images = [
 "Nestle, KitKat - Rs. 200.00, Chocolate.jpg",
 "Nestle, Maggi - Rs. 14.00, Pasta & Noodles.jpg",
 "Nestle, Milk Maid 400gm - Rs. 200, Bakery.jpg",
-"Nestle, Munch Crunchilicious Milk Chocolate 48Pc Box Pack 450 Gram - Rs. 450.00, Chocolate.jpg",
+"Nestle, Munch Chocolate 48Pc Box Pack 450g - Rs. 450.00, Chocolate.jpg",
 "Noriko, Rice Vinegar 620ml - Rs. 150.00, Japanese Thai & Oriental.jpg",
 "Noriko, Roasted Nori (Seaweed) 140gm (Pack of 50) - Rs. 700.00, Japanese Thai & Oriental.jpg",
 "Noriko, Wasabi Paste 43gm - Rs. 75.00, Japanese Thai & Oriental.jpg",
