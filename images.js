@@ -1,5 +1,5 @@
 const images = [
-"McCain, Family Fun Combo Pack 1.2kg- Rs. 272.00, Frozen Veg Snacks.jpeg",
+"McCain, Family Fun Combo Pack 1.2kg - Rs. 272.00, Frozen Veg Snacks.jpeg",
 "Fun Top, Continental Sauce 5kg - Rs. 250.00, Sauce Ketchup and Mayonnaise.png",
 "Amul, Butter 100gm - Rs. 60.00, Dairy Products.jpg",
 "Amul, Cheese Cheese Slice 750g - Rs. 425.00, Cheese.jpg",
