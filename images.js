@@ -1,4 +1,5 @@
 const images = [
+"Switz, Spring Roll Sheets 250mm (30 Sheets) 550g - Rs. 200.00, Bakery.png",
 "Rich's,  Double Dream Cream 1Ltr - Rs. 225.00, Dairy Products.png",  
 "McCain, Family Fun Combo Pack 1.2kg - Rs. 272.00, Frozen Veg Snacks.jpeg",
 "Fun Top, Continental Sauce 5kg - Rs. 250.00, Sauce Ketchup and Mayonnaise.png",
