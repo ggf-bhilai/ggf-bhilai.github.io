@@ -1,4 +1,8 @@
 const images = [
+"Disposable, Paper Plate No. 2 100Pcs - Rs. 40.00, Disposable.jpg",
+"Disposable, Silver Paper Plate 100Pcs - Rs. 40.00, Disposable.jpg",
+"Disposable, Green Paper Plate 100Pcs - Rs. 100.00, Disposable.jpg", 
+"Disposable, Paper Plate 3CP 100Pcs - Rs. 400.00, Disposable.jpg",
 "Switz, Spring Roll Sheets 250mm (30 Sheets) 550g - Rs. 200.00, Bakery.png",
 "Rich's,  Double Dream Cream 1Ltr - Rs. 225.00, Dairy Products.png",  
 "McCain, Family Fun Combo Pack 1.2kg - Rs. 272.00, Frozen Veg Snacks.jpeg",
