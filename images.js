@@ -95,7 +95,7 @@ const images = [
 "DaVinci, Pecan Praline Syrup 750ml - Rs. 800.00, Syrups and Crushes.jpg",
 "Delta, Hazalnut Spread 1kg - Rs. 650.00, Bakery.jpg",
 "Delta, Toffee Caramel 1kg - Rs. 350.00, Spread.jpg",
-"Disposable, Aluminium Container with Lid 450ml (Pack of 100) - Rs. 400.00, Disposables.jpg",
+"Disposable, Aluminium Container with Lid 450ml (Pack of 100) - Rs. 400.00, Disposable.jpg",
 "Disposable, Aluminium Foil Roll - Rs. 300.00, Disposable.jpg",
 "Dr Oetker, Funfoods Italian Style Pasta And Pizza Sauce 1kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 "Dr Oetker, Funfoods Makhani Sauce For Pasta And Pizza 1kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
