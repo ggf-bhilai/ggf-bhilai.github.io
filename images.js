@@ -1,4 +1,9 @@
 const images = [
+"Pietro Coricelli, Aceto Balsamaico Vinegar 500 Ml - Rs. 450.00, Vinegar.jpg",
+"Monin, Passion Fruit Puree 1Ltr - Rs. 1300, Fruit Puree.jpg",
+"Monin, Kiwi Puree 1Ltr - Rs. 1300.00, Fruit Puree.jpg",
+"Monin, Blueberry Puree 1Ltr - Rs. 1300.00, Fruit Puree.jpg",
+"Black & White, Ginger Ale 250ml - Rs. 80.00, Beverages.jpg",
 "Fruit Pulp, Strawberry Whole 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
 "Fruit Pulp, Litchi Pulp 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
 "Fruit Pulp, Kiwi Pulp 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
