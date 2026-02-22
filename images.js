@@ -1,4 +1,8 @@
-const images = [
+const images = 
+"Fruit Pulp, Strawberry Whole 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
+"Fruit Pulp, Litchi Pulp 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
+"Fruit Pulp, Kiwi Pulp 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
+"Disposable, Food Wrap Sheet (12x12) 250 Sheets - Rs. 250.00, Disposable.jpeg",
 "Fruit Pulp, Chiku Pulp 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
 "Fruit Pulp, Jamun Pulp 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
 "Fruit Pulp, Sitafal Pulp 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
