@@ -1,4 +1,5 @@
 const images = [
+"Fruit Pulp, Mango Pulp 1kg - Rs. 300.00, Frozen Fruit Pulp.png",  
 "Disposable, Tea Coffee Cup 100Pcs - Rs. 40.00, Disposable.jpg",
 "Disposable, Tea Coffee Cup 100Pcs - Rs. 60.00, Disposable.jpg",
 "Disposable, Cling Wrap 600mtr - Rs. 350.00, Disposable.jpg",
