@@ -1,4 +1,4 @@
-const images = 
+const images = [
 "Fruit Pulp, Strawberry Whole 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
 "Fruit Pulp, Litchi Pulp 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
 "Fruit Pulp, Kiwi Pulp 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
