@@ -1,4 +1,5 @@
 const images = [
+"Amul, Amulya Milk Powder 1kg Rs. 500.00, Food Ingredients.jpg",
 "Riscossa, Rigatoni Pasta 500g - Rs. 250.00, Pasta and Noodles.png",
 "Pietro Coricelli, Aceto Balsamaico Vinegar 500 Ml - Rs. 450.00, Vinegar.jpg",
 "Monin, Passion Fruit Puree 1Ltr - Rs. 1300, Fruit Puree.jpg",
