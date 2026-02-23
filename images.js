@@ -218,7 +218,7 @@ const images = [
 "Golden Crown, MSG - Rs. 100.00, Masale.jpg",
 "Golden Crown, Panko Bread Crumbs 1Kg - Rs. 200.00, Bakery.jpg",
 "Golden Crown, Pineapple Slice 850g - Rs. 200.00, Canned & Imported Items.jpg",
-"Golden Crown, Pineapple Slice 850gm - Rs. 180.00, Canned & Imported Items.jpg",
+"Habit, Pineapple Slice 850gm - Rs. 180.00, Canned & Imported Items.jpg",
 "Golden Crown, Red Cherry 850g - Rs. 200.00, Canned & Imported Items.jpg",
 "Golden Crown, Sweet Corn Cream Style 450g - Rs. 200.00, Canned & Imported Items.jpg",
 "Golden Crown, Sweet Corn Kernels 400g - Rs. 200.00, Canned & Imported Items.jpg",
