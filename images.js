@@ -1,4 +1,5 @@
 const images = [
+"Nutralite, Doodh Shakti Ghee 1Ltr - Rs. 600.00, Dairy.webp",
 "Amul, Amulya Milk Powder 1kg Rs. 500.00, Food Ingredients.jpg",
 "Riscossa, Rigatoni Pasta 500g - Rs. 250.00, Pasta and Noodles.png",
 "Pietro Coricelli, Aceto Balsamaico Vinegar 500 Ml - Rs. 450.00, Vinegar.jpg",
