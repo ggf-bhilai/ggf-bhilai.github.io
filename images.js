@@ -1,4 +1,11 @@
 const images = [
+"Finosta, Whole Wheat Spaghetti Pasta 500g - Rs. 175.00, Pasta and Noodles.png",
+"Finosta, Lasagne Pasta Sheets 500g - Rs. 300, Pasta and Noodles.png",
+"Finosta, Quinoa Penne Pasta 250g - Rs 150.00, Pasta and Noodles.png",
+"Finosta, Macaroni Pasta 500g - Rs. 140.00, Pasta and Noodles.png",
+"Finosta, Fettuccine Pasta 500g - Rs. 150.00, Pasta and Noodles.png",
+"Finosta, Red Lentil & Chickpea Penne Pasta 250g - Rs. 185.00, Pasta and Noodles.png",
+"Finosta, Beetroot Fusilli Pasta 250g - Rs. 185.00, Pasta and Noodles.png",
 "Ferrero Rocher, Ferrero Rocher Chocolate 4 Pieces 50g - Rs. 169.00, Chocolate.jpg",  
 "Ferrero Rocher, Ferrero Rocher Chocolate 16 Pieces 200g - Rs. 539.00, Chocolate.jpg",
 "Nutralite, Doodh Shakti Ghee 1Ltr - Rs. 600.00, Dairy.webp",
