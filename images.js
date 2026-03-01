@@ -1,4 +1,5 @@
 const images = [
+"Ferrero Rocher, Ferrero Rocher Chocolate 16 Pieces 200g - Rs. 539.00, Chocolate.jpg",
 "Nutralite, Doodh Shakti Ghee 1Ltr - Rs. 600.00, Dairy.webp",
 "Amul, Amulya Milk Powder 1kg Rs. 500.00, Food Ingredients.jpg",
 "Riscossa, Rigatoni Pasta 500g - Rs. 250.00, Pasta and Noodles.png",
