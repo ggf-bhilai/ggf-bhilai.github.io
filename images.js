@@ -1,7 +1,7 @@
 const images = [
 "Finosta, Whole Wheat Spaghetti Pasta 500g - Rs. 175.00, Pasta and Noodles.png",
 "Finosta, Lasagne Pasta Sheets 500g - Rs. 300, Pasta and Noodles.png",
-"Finosta, Quinoa Penne Pasta 250g - Rs 150.00, Pasta and Noodles.png",
+"Finosta, Quinoa Penne Pasta 250g - Rs. 150.00, Pasta and Noodles.png",
 "Finosta, Macaroni Pasta 500g - Rs. 140.00, Pasta and Noodles.png",
 "Finosta, Fettuccine Pasta 500g - Rs. 150.00, Pasta and Noodles.png",
 "Finosta, Red Lentil & Chickpea Penne Pasta 250g - Rs. 185.00, Pasta and Noodles.png",
