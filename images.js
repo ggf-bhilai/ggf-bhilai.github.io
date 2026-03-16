@@ -128,6 +128,7 @@ const images = [
 "Dr Oetker, Italian Style Pasta And Pizza Sauce No Onion No Garlic 1kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 "Dr Oetker, Tomato Ketchup Professional 1.2Kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
 "Dr Oetker, Veg Mayonnaise Smoky Peri Peri 1kg - Rs. 150.00, Sauce Ketchup and Mayonnaise.jpg",
+"Dr Oetker, Veg Mayonnaise Green Mint 1kg - Rs. 200.00, Sauce Ketchup and Mayonnaise.png",
 "Everest, Chat Masala - Rs. 70.00, Masale.jpg",
 "Everest, Chicken Masala - Rs. 70.00, Masale.jpg",
 "Everest, Chole Masala - Rs. 70.00, Masale.jpg",
