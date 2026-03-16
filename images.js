@@ -276,6 +276,7 @@ const images = [
 "Lee Kum Kee, Plum Sauce 260 g Bottle - Rs. 150, Sauce Ketchup and Mayonnaise.jpg",
 "Lee Kum Kee, Veg Oyster Sauce (510 ml) - Rs. 250.00, Sauce Ketchup and Mayonnaise.jpg",
 "Lotus, Biscof Smooth Creamy Spread - Rs. 500, Spread.jpg",
+"Mavees, Caramelised Biscuit Spread 1kg - Rs. 800.00, Spread.jpg",
 "Lotus, Biscofs Biscuits - Rs. 200.00, Biscuits.jpg",
 "Luciana, Maraschino Cherry 720ml - Rs. 650, Canned & Imported Items.jpg",
 "Madras, Ship Curry - Rs. 200.00, Masale.jpg",
