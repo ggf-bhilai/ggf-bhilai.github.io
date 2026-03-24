@@ -25,7 +25,7 @@ const images = [
 "Fruit Pulp, Frozen Chiku Slice 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
 "Fruit Pulp, Frozen Kiwi Slice 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
 "Fruit Pulp, Frozen Fig Slice 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
-"Fruit Pulp, Frozen Litchi Slice 1kg - Rs. 300.00, Frozen Fruit Pulp.png",  
+"Fruit Pulp, Frozen Litchi Slice 1kg - Rs. 800.00, Frozen Fruit Pulp.png",  
 "Fruit Pulp, Frozen Pink Guava Slice 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
 "Fruit Pulp, Litchi Pulp 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
 "Fruit Pulp, Kiwi Pulp 1kg - Rs. 300.00, Frozen Fruit Pulp.png",
