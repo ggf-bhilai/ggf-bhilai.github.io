@@ -229,6 +229,7 @@ const images = [
 "Godrej Yummiez, Veg Cheese Nuggets 1kg - Rs. 300.00, Frozen Veg Snacks.jpg",
 "Godrej Yummiez, Veg Masala Nuggets 400g - Rs. 187.00, Frozen Veg Snacks.jpg",
 "Godrej Yummiez, Veg Party Pack 600g - Rs. 323.00, Frozen Veg Snacks.jpg",
+"Twin Tusk Leng Heng, Seasoning Pickled Ginger 840g - Rs. 750.00, Canned & Imported Items.png:,
 "Golden Crown, Baby Corn (In Brine) 850 gm - Rs. 80.00, Canned & Imported Items.jpg",
 "Golden Crown, Baked Beans In Sauce 450g - Rs. 80.00, Canned & Imported Items.jpg",
 "Golden Crown, Beans In Tomato Sauce 450gm - Rs. 100.00, Canned & Imported Items.jpg",
