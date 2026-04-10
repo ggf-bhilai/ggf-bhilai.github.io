@@ -83,19 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     cartValueEl.textContent = "₹ " + totalValue.toFixed(2);
   }
 
-  function buildOrderText() {
-    let selected = products.filter(p => p.qty > 0);
-    if (selected.length === 0) return null;
-
-    let text = "🛒 VeggieFresh Order List:\n\n";
-
-    selected.forEach((p, i) => {
-      text += `${i + 1}. ${p.name} (${p.brand}) x ${p.qty}\n`;
-    });
-
-    return text;
-  }
-
   function openProductPage(product) {
     window.location.href =
       "product.html?file=" + encodeURIComponent(product.file);
