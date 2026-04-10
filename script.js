@@ -1,20 +1,14 @@
 /* ============================================================
-   VeggieFresh Catalogue Script (FINAL CLEAN VERSION)
+   VeggieFresh Catalogue Script (FINAL FIXED VERSION)
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* ==============================
-     1. SAFETY CHECK
-  ============================== */
   if (typeof images === "undefined") {
     alert("❌ images.js not loaded!");
     return;
   }
 
-  /* ==============================
-     2. DOM ELEMENTS
-  ============================== */
   const grid = document.getElementById("catalogGrid");
   const searchBox = document.getElementById("searchBox");
   const categoryFilter = document.getElementById("categoryFilter");
@@ -25,33 +19,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const copyBtn = document.getElementById("copyOrder");
   const whatsappBtn = document.getElementById("sendWhatsapp");
 
-  /* ==============================
-     3. BRAND FILTER PARAM
-     catalogue.html?brand=Amul
-  ============================== */
   const params = new URLSearchParams(window.location.search);
   const selectedBrand = params.get("brand");
 
-  // Heading Show (Safe)
   const heading = document.getElementById("brandHeading");
   if (selectedBrand && heading) {
-    heading.textContent =
-      "Showing all products from: " + selectedBrand;
+    heading.textContent = "Showing all products from: " + selectedBrand;
   }
 
-  /* ==============================
-     4. PRODUCTS ARRAY
-  ============================== */
   let products = [];
 
-  /* ==============================
-     5. PARSE PRODUCT FROM FILENAME
-     Amul, Butter 100gm - Rs. 60, Dairy.jpg
-  ============================== */
   function parseFilename(file) {
-
     let clean = file.replace(/\.(jpg|jpeg|png)$/i, "");
-
     let commaIndex = clean.indexOf(",");
     if (commaIndex === -1) return null;
 
@@ -64,26 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let priceCats = (parts[1] || "").split(",");
     let price = parseFloat(priceCats[0]) || 0;
 
-    let categories = priceCats
-      .slice(1)
-      .map(c => c.trim())
-      .filter(Boolean);
-
+    let categories = priceCats.slice(1).map(c => c.trim()).filter(Boolean);
     if (categories.length === 0) categories = ["Others"];
 
-    return {
-      file,
-      brand,
-      name,
-      price,
-      categories,
-      qty: 0
-    };
+    return { file, brand, name, price, categories, qty: 0 };
   }
 
-  /* ==============================
-     6. BUILD PRODUCT LIST
-  ============================== */
   images.forEach(file => {
     let p = parseFilename(file);
     if (p) products.push(p);
@@ -94,16 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return a.name.localeCompare(b.name);
   });
 
-  /* ==============================
-     7. CATEGORY FILTER BUILD
-  ============================== */
   function buildCategoryFilter() {
-
     let set = new Set();
-
-    products.forEach(p => {
-      p.categories.forEach(cat => set.add(cat));
-    });
+    products.forEach(p => p.categories.forEach(cat => set.add(cat)));
 
     categoryFilter.innerHTML =
       `<option value="all">All Categories</option>` +
@@ -112,11 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
       ).join("");
   }
 
-  /* ==============================
-     8. UPDATE CART
-  ============================== */
   function updateCart() {
-
     let totalQty = 0;
     let totalValue = 0;
 
@@ -129,11 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cartValueEl.textContent = "₹ " + totalValue.toFixed(2);
   }
 
-  /* ==============================
-     9. ORDER TEXT
-  ============================== */
   function buildOrderText() {
-
     let selected = products.filter(p => p.qty > 0);
     if (selected.length === 0) return null;
 
@@ -146,20 +96,12 @@ document.addEventListener("DOMContentLoaded", function () {
     return text;
   }
 
-  /* ==============================
-     10. PRODUCT PAGE OPEN
-  ============================== */
   function openProductPage(product) {
     window.location.href =
-      "product.html?file=" +
-      encodeURIComponent(product.file);
+      "product.html?file=" + encodeURIComponent(product.file);
   }
 
-  /* ==============================
-     11. RENDER CATALOGUE
-  ============================== */
   function renderCatalogue() {
-
     let search = searchBox.value.toLowerCase();
     let catVal = categoryFilter.value;
 
@@ -167,16 +109,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     products.forEach(p => {
 
-      // Brand Filter
       if (selectedBrand &&
         p.brand.toLowerCase() !== selectedBrand.toLowerCase()) return;
 
-      // Search Filter
       if (search &&
         !p.name.toLowerCase().includes(search) &&
         !p.brand.toLowerCase().includes(search)) return;
 
-      // Category Filter
       if (catVal !== "all" &&
         !p.categories.includes(catVal)) return;
 
@@ -194,59 +133,32 @@ document.addEventListener("DOMContentLoaded", function () {
           <input class="qty-input" type="number" value="${p.qty}">
           <button class="plus">+</button>
 
-          <!-- WhatsApp Share Button -->
           <button class="wa-share" title="Share on WhatsApp">
-            <img src="share.png" alt="WhatsApp">
+            <img src="share.png">
           </button>
         </div>
       `;
 
-      /* OPEN PRODUCT PAGE */
       card.querySelector("img").onclick = () => openProductPage(p);
       card.querySelector(".title").onclick = () => openProductPage(p);
 
-      /* WHATSAPP SHARE */
-      let waShareBtn = card.querySelector(".wa-share");
-
-      waShareBtn.onclick = (e) => {
-        e.stopPropagation();
-
-        let productUrl =
-          "https://veggiefresh.in/product.html?file=" +
-          encodeURIComponent(p.file);
-
-        let message =
-          `Order "${p.brand} ${p.name}" from Geetanjali Good Foods\n\n` +
-          `View Product: ${productUrl}`;
-
-        window.open(
-          "https://wa.me/?text=" + encodeURIComponent(message),
-          "_blank"
-        );
-      };
-
-      /* QTY CONTROLS */
-      let minus = card.querySelector(".minus");
-      let plus = card.querySelector(".plus");
-      let qtyInput = card.querySelector(".qty-input");
-
-      minus.onclick = () => {
+      card.querySelector(".minus").onclick = () => {
         if (p.qty > 0) p.qty--;
-        qtyInput.value = p.qty;
+        card.querySelector(".qty-input").value = p.qty;
         updateCart();
       };
 
-      plus.onclick = () => {
+      card.querySelector(".plus").onclick = () => {
         p.qty++;
-        qtyInput.value = p.qty;
+        card.querySelector(".qty-input").value = p.qty;
         updateCart();
       };
 
-      qtyInput.onchange = () => {
-        let val = parseInt(qtyInput.value) || 0;
+      card.querySelector(".qty-input").onchange = (e) => {
+        let val = parseInt(e.target.value) || 0;
         if (val < 0) val = 0;
         p.qty = val;
-        qtyInput.value = p.qty;
+        e.target.value = p.qty;
         updateCart();
       };
 
@@ -254,99 +166,41 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-// ===============================
-// 🛒 CART SYSTEM
-// ===============================
+  // ===============================
+  // 📦 CHECKOUT MODAL (FIXED)
+  // ===============================
 
-let cart = {};
+  const modal = document.getElementById("checkoutModal");
+  const orderPreview = document.getElementById("orderPreview");
 
-function addToCart(name, price) {
-  if (!cart[name]) {
-    cart[name] = { qty: 1, price: price };
-  } else {
-    cart[name].qty++;
-  }
-  updateCartUI();
-}
+  if (whatsappBtn) {
+    whatsappBtn.onclick = () => {
+      let text = buildOrderText();
+      if (!text) return alert("❌ No items selected");
 
-function removeFromCart(name) {
-  if (cart[name]) {
-    cart[name].qty--;
-    if (cart[name].qty <= 0) delete cart[name];
-  }
-  updateCartUI();
-}
-
-function updateCartUI() {
-  let qty = 0;
-  let total = 0;
-
-  for (let item in cart) {
-    qty += cart[item].qty;
-    total += cart[item].qty * cart[item].price;
+      orderPreview.textContent = text;
+      modal.style.display = "flex";
+    };
   }
 
-  document.getElementById("cartQty").innerText = qty;
-  document.getElementById("cartValue").innerText = "₹ " + total.toFixed(2);
-}
+  document.getElementById("closeCheckout")?.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
 
-// ===============================
-// 🧾 BUILD ORDER TEXT
-// ===============================
+  document.getElementById("placeOrder")?.addEventListener("click", () => {
 
-function buildOrderText() {
-  let text = "";
-  let i = 1;
+    let name = document.getElementById("custName").value;
+    let mobile = document.getElementById("custMobile").value;
+    let address = document.getElementById("custAddress").value;
 
-  for (let item in cart) {
-    text += `${i}. ${item} x ${cart[item].qty}\n`;
-    i++;
-  }
+    let text = buildOrderText();
 
-  return text;
-}
+    if (!name || !mobile) {
+      return alert("⚠️ Please fill Name & Mobile");
+    }
 
-// ===============================
-// 📦 CHECKOUT MODAL LOGIC
-// ===============================
-
-const whatsappBtn = document.getElementById("sendWhatsapp");
-const modal = document.getElementById("checkoutModal");
-const orderPreview = document.getElementById("orderPreview");
-
-// 👉 OPEN CHECKOUT
-whatsappBtn.onclick = () => {
-  let text = buildOrderText();
-  if (!text) return alert("❌ No items selected");
-
-  orderPreview.textContent = text;
-  modal.style.display = "flex";
-};
-
-// 👉 CLOSE CHECKOUT
-document.getElementById("closeCheckout").onclick = () => {
-  modal.style.display = "none";
-};
-
-// 👉 PLACE ORDER
-document.getElementById("placeOrder").onclick = () => {
-
-  let name = document.getElementById("custName").value;
-  let mobile = document.getElementById("custMobile").value;
-  let address = document.getElementById("custAddress").value;
-
-  let text = buildOrderText();
-
-  if (!name || !mobile) {
-    return alert("⚠️ Please fill Name & Mobile");
-  }
-
-  let orderId = "ORD" + Date.now();
-
-  let finalMessage =
-`🛒 *New Order - VeggieFresh*
-
-🆔 Order ID: ${orderId}
+    let finalMessage =
+`🛒 New Order - VeggieFresh
 
 👤 Name: ${name}
 📞 Mobile: ${mobile}
@@ -355,70 +209,35 @@ document.getElementById("placeOrder").onclick = () => {
 -------------------------
 ${text}`;
 
-  window.open(
-    "https://wa.me/919074964418?text=" +
-    encodeURIComponent(finalMessage),
-    "_blank"
-  );
-};
-
-// ===============================
-// 💾 AUTO SAVE CUSTOMER DETAILS
-// ===============================
-
-if (document.getElementById("custName")) {
-
-  // Load saved data
-  document.getElementById("custName").value =
-    localStorage.getItem("name") || "";
-
-  document.getElementById("custMobile").value =
-    localStorage.getItem("mobile") || "";
-
-  document.getElementById("custAddress").value =
-    localStorage.getItem("address") || "";
-
-  // Save on input
-  ["custName", "custMobile", "custAddress"].forEach(id => {
-    document.getElementById(id).addEventListener("input", function () {
-
-      localStorage.setItem(
-        "name",
-        document.getElementById("custName").value
-      );
-
-      localStorage.setItem(
-        "mobile",
-        document.getElementById("custMobile").value
-      );
-
-      localStorage.setItem(
-        "address",
-        document.getElementById("custAddress").value
-      );
-
-    });
+    window.open(
+      "https://wa.me/919074964418?text=" +
+      encodeURIComponent(finalMessage),
+      "_blank"
+    );
   });
-}
 
-// ===============================
-// 📋 COPY ORDER BUTTON
-// ===============================
+  // ===============================
+  // 💾 AUTO SAVE
+  // ===============================
 
-const copyBtn = document.getElementById("copyOrder");
+  if (document.getElementById("custName")) {
+    custName.value = localStorage.getItem("name") || "";
+    custMobile.value = localStorage.getItem("mobile") || "";
+    custAddress.value = localStorage.getItem("address") || "";
 
-if (copyBtn) {
-  copyBtn.onclick = () => {
-    let text = buildOrderText();
-    if (!text) return alert("❌ No items");
+    ["custName", "custMobile", "custAddress"].forEach(id => {
+      document.getElementById(id).addEventListener("input", () => {
+        localStorage.setItem("name", custName.value);
+        localStorage.setItem("mobile", custMobile.value);
+        localStorage.setItem("address", custAddress.value);
+      });
+    });
+  }
 
-    navigator.clipboard.writeText(text);
-    alert("✅ Order copied!");
-  };
-}
-  /* ==============================
-     13. INIT
-  ============================== */
+  // ===============================
+  // INIT
+  // ===============================
+
   buildCategoryFilter();
   renderCatalogue();
   updateCart();
