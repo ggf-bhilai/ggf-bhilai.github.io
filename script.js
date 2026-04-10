@@ -208,8 +208,6 @@ ${text}`;
   let url = "https://wa.me/919074964418?text=" + encodeURIComponent(finalMessage);
 
   window.open(url, "_blank");
-};
-    );
   });
 
   // ===============================
