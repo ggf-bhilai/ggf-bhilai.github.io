@@ -212,7 +212,7 @@ ${text}`;
     window.open(
       "https://wa.me/919074964418?text=" +
       encodeURIComponent(finalMessage),
-      "_blank"
+      window.open(url, "_blank");
     );
   });
 
