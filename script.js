@@ -83,22 +83,23 @@ document.addEventListener("DOMContentLoaded", function () {
     cartValueEl.textContent = "₹ " + totalValue.toFixed(2);
   }
 
+  function buildOrderText() {
+    let selected = products.filter(p => p.qty > 0);
+    if (selected.length === 0) return null;
+
+    let text = "🛒 VeggieFresh Order List:\n\n";
+
+    selected.forEach((p, i) => {
+      text += `${i + 1}. ${p.name} (${p.brand}) x ${p.qty}\n`;
+    });
+
+    return text;
+  }
+
   function openProductPage(product) {
     window.location.href =
       "product.html?file=" + encodeURIComponent(product.file);
   }
-
-   function buildOrderText() {
-  let text = "";
-  let i = 1;
-
-  for (let item in cart) {
-    text += `${i}. ${item} x ${cart[item].qty}\n`;
-    i++;
-  }
-
-  return text;
-}
 
   function renderCatalogue() {
     let search = searchBox.value.toLowerCase();
@@ -186,40 +187,33 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.style.display = "none";
   });
 
-  document.getElementById("placeOrder").onclick = () => {
+  document.getElementById("placeOrder")?.addEventListener("click", () => {
 
-  let name = document.getElementById("custName").value.trim();
-  let mobile = document.getElementById("custMobile").value.trim();
-  let address = document.getElementById("custAddress").value.trim();
+    let name = document.getElementById("custName").value;
+    let mobile = document.getElementById("custMobile").value;
+    let address = document.getElementById("custAddress").value;
 
-  let text = buildOrderText();
+    let text = buildOrderText();
 
-  if (!name || !mobile) {
-    return alert("⚠️ Please fill Name & Mobile");
-  }
+    if (!name || !mobile) {
+      return alert("⚠️ Please fill Name & Mobile");
+    }
 
-  // ✅ Format Name (Proper Case)
-  name = name.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
-
-  let orderId = "ORD" + Date.now();
-
-  // ✅ CLEAN WHATSAPP MESSAGE
-  let finalMessage =
+    let finalMessage =
 `🛒 New Order - VeggieFresh
 
 👤 Name: ${name}
 📞 Mobile: ${mobile}
-📍 Address: ${address || "-"}
+📍 Address: ${address}
 
 -------------------------
-🛒 VeggieFresh Order List:
-
 ${text}`;
 
-  // ✅ ENCODE PROPERLY
-  let url = "https://wa.me/919074964418?text=" + encodeURIComponent(finalMessage);
-
-  window.open(url, "_blank");
+    window.open(
+      "https://wa.me/919074964418?text=" +
+      encodeURIComponent(finalMessage),
+      "_blank"
+    );
   });
 
   // ===============================
