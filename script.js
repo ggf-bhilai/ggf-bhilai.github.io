@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const cartValueEl = document.getElementById("cartValue");
 
   const copyBtn = document.getElementById("copyOrder");
-  const whatsappBtn = document.getElementById("sendWhatsapp");
+  const whatsappBtn = document.getElementById("sendWhatsapp") || {};
 
   const params = new URLSearchParams(window.location.search);
   const selectedBrand = params.get("brand");
