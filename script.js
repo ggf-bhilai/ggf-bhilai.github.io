@@ -25,6 +25,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const copyBtn = document.getElementById("copyOrder");
   const whatsappBtn = document.getElementById("sendWhatsapp");
 
+/* ✅ AUTO SAVE CUSTOMER DETAILS */
+
+// Load saved data
+document.getElementById("custName").value = localStorage.getItem("name") || "";
+document.getElementById("custMobile").value = localStorage.getItem("mobile") || "";
+document.getElementById("custAddress").value = localStorage.getItem("address") || "";
+
+// Save on typing
+["custName","custMobile","custAddress"].forEach(id => {
+  document.getElementById(id).addEventListener("input", function() {
+    localStorage.setItem("name", document.getElementById("custName").value);
+    localStorage.setItem("mobile", document.getElementById("custMobile").value);
+    localStorage.setItem("address", document.getElementById("custAddress").value);
+  });
+});
+
   /* ==============================
      3. BRAND FILTER PARAM
      catalogue.html?brand=Amul
@@ -266,15 +282,36 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   whatsappBtn.onclick = () => {
-    let text = buildOrderText();
-    if (!text) return alert("❌ No items selected");
 
-    window.open(
-      "https://wa.me/919074964418?text=" +
-      encodeURIComponent(text),
-      "_blank"
-    );
-  };
+  let text = buildOrderText();
+  if (!text) return alert("❌ No items selected");
+
+  // 👇 customer details uthao
+  let name = document.getElementById("custName").value;
+  let mobile = document.getElementById("custMobile").value;
+  let address = document.getElementById("custAddress").value;
+
+  if (!name || !mobile) {
+    return alert("⚠️ Please enter Name & Mobile");
+  }
+
+  // 👇 final message banao
+  let finalMessage =
+`🛒 New Order - VeggieFresh
+
+👤 Name: ${name}
+📞 Mobile: ${mobile}
+📍 Address: ${address}
+
+-------------------------
+${text}`;
+
+  window.open(
+    "https://wa.me/919074964418?text=" +
+    encodeURIComponent(finalMessage),
+    "_blank"
+  );
+};
 
   /* ==============================
      13. INIT
