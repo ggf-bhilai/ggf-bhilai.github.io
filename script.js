@@ -1,307 +1,96 @@
-/* ============================================================
-   VeggieFresh Catalogue Script (FINAL CLEAN VERSION)
-============================================================ */
+// ===============================
+// 🛒 CART SYSTEM
+// ===============================
 
-document.addEventListener("DOMContentLoaded", function () {
+let cart = {};
 
-  /* ==============================
-     1. SAFETY CHECK
-  ============================== */
-  if (typeof images === "undefined") {
-    alert("❌ images.js not loaded!");
-    return;
+function addToCart(name, price) {
+  if (!cart[name]) {
+    cart[name] = { qty: 1, price: price };
+  } else {
+    cart[name].qty++;
   }
-
-  /* ==============================
-     2. DOM ELEMENTS
-  ============================== */
-  const grid = document.getElementById("catalogGrid");
-  const searchBox = document.getElementById("searchBox");
-  const categoryFilter = document.getElementById("categoryFilter");
-
-  const cartQtySpan = document.getElementById("cartQty");
-  const cartValueEl = document.getElementById("cartValue");
-
-  const copyBtn = document.getElementById("copyOrder");
-  const whatsappBtn = document.getElementById("sendWhatsapp");
-
-/* ✅ AUTO SAVE CUSTOMER DETAILS */
-
-// Load saved data
-if (document.getElementById("custName")) {
-
-  document.getElementById("custName").value = localStorage.getItem("name") || "";
-  document.getElementById("custMobile").value = localStorage.getItem("mobile") || "";
-  document.getElementById("custAddress").value = localStorage.getItem("address") || "";
-
-// Save on typing
-["custName","custMobile","custAddress"].forEach(id => {
-    document.getElementById(id).addEventListener("input", function() {
-      localStorage.setItem("name", document.getElementById("custName").value);
-      localStorage.setItem("mobile", document.getElementById("custMobile").value);
-      localStorage.setItem("address", document.getElementById("custAddress").value);
-    });
-  });
-
+  updateCartUI();
 }
 
-  /* ==============================
-     3. BRAND FILTER PARAM
-     catalogue.html?brand=Amul
-  ============================== */
-  const params = new URLSearchParams(window.location.search);
-  const selectedBrand = params.get("brand");
+function removeFromCart(name) {
+  if (cart[name]) {
+    cart[name].qty--;
+    if (cart[name].qty <= 0) delete cart[name];
+  }
+  updateCartUI();
+}
 
-  // Heading Show (Safe)
-  const heading = document.getElementById("brandHeading");
-  if (selectedBrand && heading) {
-    heading.textContent =
-      "Showing all products from: " + selectedBrand;
+function updateCartUI() {
+  let qty = 0;
+  let total = 0;
+
+  for (let item in cart) {
+    qty += cart[item].qty;
+    total += cart[item].qty * cart[item].price;
   }
 
-  /* ==============================
-     4. PRODUCTS ARRAY
-  ============================== */
-  let products = [];
+  document.getElementById("cartQty").innerText = qty;
+  document.getElementById("cartValue").innerText = "₹ " + total.toFixed(2);
+}
 
-  /* ==============================
-     5. PARSE PRODUCT FROM FILENAME
-     Amul, Butter 100gm - Rs. 60, Dairy.jpg
-  ============================== */
-  function parseFilename(file) {
+// ===============================
+// 🧾 BUILD ORDER TEXT
+// ===============================
 
-    let clean = file.replace(/\.(jpg|jpeg|png)$/i, "");
+function buildOrderText() {
+  let text = "";
+  let i = 1;
 
-    let commaIndex = clean.indexOf(",");
-    if (commaIndex === -1) return null;
-
-    let brand = clean.slice(0, commaIndex).trim();
-    let rest = clean.slice(commaIndex + 1).trim();
-
-    let parts = rest.split(" - Rs.");
-    let name = parts[0].trim();
-
-    let priceCats = (parts[1] || "").split(",");
-    let price = parseFloat(priceCats[0]) || 0;
-
-    let categories = priceCats
-      .slice(1)
-      .map(c => c.trim())
-      .filter(Boolean);
-
-    if (categories.length === 0) categories = ["Others"];
-
-    return {
-      file,
-      brand,
-      name,
-      price,
-      categories,
-      qty: 0
-    };
+  for (let item in cart) {
+    text += `${i}. ${item} x ${cart[item].qty}\n`;
+    i++;
   }
 
-  /* ==============================
-     6. BUILD PRODUCT LIST
-  ============================== */
-  images.forEach(file => {
-    let p = parseFilename(file);
-    if (p) products.push(p);
-  });
+  return text;
+}
 
-  products.sort((a, b) => {
-    if (a.brand !== b.brand) return a.brand.localeCompare(b.brand);
-    return a.name.localeCompare(b.name);
-  });
+// ===============================
+// 📦 CHECKOUT MODAL LOGIC
+// ===============================
 
-  /* ==============================
-     7. CATEGORY FILTER BUILD
-  ============================== */
-  function buildCategoryFilter() {
+const whatsappBtn = document.getElementById("sendWhatsapp");
+const modal = document.getElementById("checkoutModal");
+const orderPreview = document.getElementById("orderPreview");
 
-    let set = new Set();
-
-    products.forEach(p => {
-      p.categories.forEach(cat => set.add(cat));
-    });
-
-    categoryFilter.innerHTML =
-      `<option value="all">All Categories</option>` +
-      [...set].sort().map(cat =>
-        `<option value="${cat}">${cat}</option>`
-      ).join("");
-  }
-
-  /* ==============================
-     8. UPDATE CART
-  ============================== */
-  function updateCart() {
-
-    let totalQty = 0;
-    let totalValue = 0;
-
-    products.forEach(p => {
-      totalQty += p.qty;
-      totalValue += p.qty * p.price;
-    });
-
-    cartQtySpan.textContent = totalQty;
-    cartValueEl.textContent = "₹ " + totalValue.toFixed(2);
-  }
-
-  /* ==============================
-     9. ORDER TEXT
-  ============================== */
-  function buildOrderText() {
-
-    let selected = products.filter(p => p.qty > 0);
-    if (selected.length === 0) return null;
-
-    let text = "🛒 VeggieFresh Order List:\n\n";
-
-    selected.forEach((p, i) => {
-      text += `${i + 1}. ${p.name} (${p.brand}) x ${p.qty}\n`;
-    });
-
-    return text;
-  }
-
-  /* ==============================
-     10. PRODUCT PAGE OPEN
-  ============================== */
-  function openProductPage(product) {
-    window.location.href =
-      "product.html?file=" +
-      encodeURIComponent(product.file);
-  }
-
-  /* ==============================
-     11. RENDER CATALOGUE
-  ============================== */
-  function renderCatalogue() {
-
-    let search = searchBox.value.toLowerCase();
-    let catVal = categoryFilter.value;
-
-    grid.innerHTML = "";
-
-    products.forEach(p => {
-
-      // Brand Filter
-      if (selectedBrand &&
-        p.brand.toLowerCase() !== selectedBrand.toLowerCase()) return;
-
-      // Search Filter
-      if (search &&
-        !p.name.toLowerCase().includes(search) &&
-        !p.brand.toLowerCase().includes(search)) return;
-
-      // Category Filter
-      if (catVal !== "all" &&
-        !p.categories.includes(catVal)) return;
-
-      let card = document.createElement("div");
-      card.className = "card";
-
-      card.innerHTML = `
-        <img src="products/${p.file}" loading="lazy">
-        <h2 class="title">${p.name}</h2>
-        <div class="brand">${p.brand}</div>
-        <div class="price">₹ ${p.price.toFixed(2)}</div>
-
-        <div class="qty-controls">
-          <button class="minus">−</button>
-          <input class="qty-input" type="number" value="${p.qty}">
-          <button class="plus">+</button>
-
-          <!-- WhatsApp Share Button -->
-          <button class="wa-share" title="Share on WhatsApp">
-            <img src="share.png" alt="WhatsApp">
-          </button>
-        </div>
-      `;
-
-      /* OPEN PRODUCT PAGE */
-      card.querySelector("img").onclick = () => openProductPage(p);
-      card.querySelector(".title").onclick = () => openProductPage(p);
-
-      /* WHATSAPP SHARE */
-      let waShareBtn = card.querySelector(".wa-share");
-
-      waShareBtn.onclick = (e) => {
-        e.stopPropagation();
-
-        let productUrl =
-          "https://veggiefresh.in/product.html?file=" +
-          encodeURIComponent(p.file);
-
-        let message =
-          `Order "${p.brand} ${p.name}" from Geetanjali Good Foods\n\n` +
-          `View Product: ${productUrl}`;
-
-        window.open(
-          "https://wa.me/?text=" + encodeURIComponent(message),
-          "_blank"
-        );
-      };
-
-      /* QTY CONTROLS */
-      let minus = card.querySelector(".minus");
-      let plus = card.querySelector(".plus");
-      let qtyInput = card.querySelector(".qty-input");
-
-      minus.onclick = () => {
-        if (p.qty > 0) p.qty--;
-        qtyInput.value = p.qty;
-        updateCart();
-      };
-
-      plus.onclick = () => {
-        p.qty++;
-        qtyInput.value = p.qty;
-        updateCart();
-      };
-
-      qtyInput.onchange = () => {
-        let val = parseInt(qtyInput.value) || 0;
-        if (val < 0) val = 0;
-        p.qty = val;
-        qtyInput.value = p.qty;
-        updateCart();
-      };
-
-      grid.appendChild(card);
-    });
-  }
-
-  /* ==============================
-     12. BUTTON ACTIONS
-  ============================== */
-  copyBtn.onclick = () => {
-    let text = buildOrderText();
-    if (!text) return alert("❌ No items selected");
-
-    navigator.clipboard.writeText(text);
-    alert("✅ Order Copied!");
-  };
-
-  whatsappBtn.onclick = () => {
-
+// 👉 OPEN CHECKOUT
+whatsappBtn.onclick = () => {
   let text = buildOrderText();
   if (!text) return alert("❌ No items selected");
 
-  // 👇 customer details uthao
+  orderPreview.textContent = text;
+  modal.style.display = "flex";
+};
+
+// 👉 CLOSE CHECKOUT
+document.getElementById("closeCheckout").onclick = () => {
+  modal.style.display = "none";
+};
+
+// 👉 PLACE ORDER
+document.getElementById("placeOrder").onclick = () => {
+
   let name = document.getElementById("custName").value;
   let mobile = document.getElementById("custMobile").value;
   let address = document.getElementById("custAddress").value;
 
+  let text = buildOrderText();
+
   if (!name || !mobile) {
-    return alert("⚠️ Please enter Name & Mobile");
+    return alert("⚠️ Please fill Name & Mobile");
   }
 
-  // 👇 final message banao
+  let orderId = "ORD" + Date.now();
+
   let finalMessage =
-`🛒 New Order - VeggieFresh
+`🛒 *New Order - VeggieFresh*
+
+🆔 Order ID: ${orderId}
 
 👤 Name: ${name}
 📞 Mobile: ${mobile}
@@ -317,14 +106,57 @@ ${text}`;
   );
 };
 
-  /* ==============================
-     13. INIT
-  ============================== */
-  buildCategoryFilter();
-  renderCatalogue();
-  updateCart();
+// ===============================
+// 💾 AUTO SAVE CUSTOMER DETAILS
+// ===============================
 
-  searchBox.addEventListener("input", renderCatalogue);
-  categoryFilter.addEventListener("change", renderCatalogue);
+if (document.getElementById("custName")) {
 
-});
+  // Load saved data
+  document.getElementById("custName").value =
+    localStorage.getItem("name") || "";
+
+  document.getElementById("custMobile").value =
+    localStorage.getItem("mobile") || "";
+
+  document.getElementById("custAddress").value =
+    localStorage.getItem("address") || "";
+
+  // Save on input
+  ["custName", "custMobile", "custAddress"].forEach(id => {
+    document.getElementById(id).addEventListener("input", function () {
+
+      localStorage.setItem(
+        "name",
+        document.getElementById("custName").value
+      );
+
+      localStorage.setItem(
+        "mobile",
+        document.getElementById("custMobile").value
+      );
+
+      localStorage.setItem(
+        "address",
+        document.getElementById("custAddress").value
+      );
+
+    });
+  });
+}
+
+// ===============================
+// 📋 COPY ORDER BUTTON
+// ===============================
+
+const copyBtn = document.getElementById("copyOrder");
+
+if (copyBtn) {
+  copyBtn.onclick = () => {
+    let text = buildOrderText();
+    if (!text) return alert("❌ No items");
+
+    navigator.clipboard.writeText(text);
+    alert("✅ Order copied!");
+  };
+}
