@@ -73,12 +73,6 @@
  
 <!-- FLOATING CART PANEL -->
 <div class="floating-cart">
-<!-- ✅ CUSTOMER FORM -->
-  <div class="customer-form">
-    <input type="text" id="custName" placeholder="👤 Your Name">
-    <input type="tel" id="custMobile" placeholder="📞 Mobile Number">
-    <textarea id="custAddress" placeholder="📍 Address"></textarea>
-  </div>
   
   <div>
     🛒 <span id="cartQty">0</span> items
@@ -96,7 +90,29 @@
     <img src="whatsapp.svg" class="wa-icon" alt="WhatsApp">
     <span class="tooltip">Send on WhatsApp</span>
   </button>
-
 </div>
+
+  <!-- ✅ CHECKOUT MODAL -->
+<div id="checkoutModal" class="checkout-modal">
+
+  <div class="checkout-box">
+
+    <h2>🧾 Checkout</h2>
+
+    <!-- Customer Details -->
+    <input type="text" id="custName" placeholder="👤 Your Name">
+    <input type="tel" id="custMobile" placeholder="📞 Mobile Number">
+    <textarea id="custAddress" placeholder="📍 Address"></textarea>
+
+    <!-- Order Preview -->
+    <pre id="orderPreview"></pre>
+
+    <!-- Buttons -->
+    <button id="placeOrder">✅ Place Order on WhatsApp</button>
+    <button id="closeCheckout">❌ Cancel</button>
+
+  </div>
+</div>
+  
 </body>
 </html>
