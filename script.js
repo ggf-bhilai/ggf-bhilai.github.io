@@ -189,32 +189,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("placeOrder")?.addEventListener("click", () => {
 
-    let name = document.getElementById("custName").value;
-    let mobile = document.getElementById("custMobile").value;
-    let address = document.getElementById("custAddress").value;
+  let name = document.getElementById("custName").value.trim();
+  let mobile = document.getElementById("custMobile").value.trim();
+  let address = document.getElementById("custAddress").value.trim();
 
-    let text = buildOrderText();
+  let text = buildOrderText();
 
-    if (!name || !mobile) {
-      return alert("⚠️ Please fill Name & Mobile");
-    }
+  if (!name || !mobile) {
+    return alert("⚠️ Please fill Name & Mobile");
+  }
 
-    let finalMessage =
+  // ✅ Proper Name Format
+  name = name.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+
+  let finalMessage =
 `🛒 New Order - VeggieFresh
 
 👤 Name: ${name}
 📞 Mobile: ${mobile}
-📍 Address: ${address}
+📍 Address: ${address || "-"}
 
 -------------------------
 ${text}`;
 
-    window.open(
-      "https://wa.me/919074964418?text=" +
-      encodeURIComponent(finalMessage),
-      window.open(url, "_blank");
-    );
-  });
+  // ✅ Correct URL
+  let url =
+    "https://wa.me/919074964418?text=" +
+    encodeURIComponent(finalMessage);
+
+  // ✅ OPEN WHATSAPP
+  window.open(url, "_blank");
+});
 
   // ===============================
   // 💾 AUTO SAVE
