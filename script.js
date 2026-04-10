@@ -28,18 +28,22 @@ document.addEventListener("DOMContentLoaded", function () {
 /* ✅ AUTO SAVE CUSTOMER DETAILS */
 
 // Load saved data
-document.getElementById("custName").value = localStorage.getItem("name") || "";
-document.getElementById("custMobile").value = localStorage.getItem("mobile") || "";
-document.getElementById("custAddress").value = localStorage.getItem("address") || "";
+if (document.getElementById("custName")) {
+
+  document.getElementById("custName").value = localStorage.getItem("name") || "";
+  document.getElementById("custMobile").value = localStorage.getItem("mobile") || "";
+  document.getElementById("custAddress").value = localStorage.getItem("address") || "";
 
 // Save on typing
 ["custName","custMobile","custAddress"].forEach(id => {
-  document.getElementById(id).addEventListener("input", function() {
-    localStorage.setItem("name", document.getElementById("custName").value);
-    localStorage.setItem("mobile", document.getElementById("custMobile").value);
-    localStorage.setItem("address", document.getElementById("custAddress").value);
+    document.getElementById(id).addEventListener("input", function() {
+      localStorage.setItem("name", document.getElementById("custName").value);
+      localStorage.setItem("mobile", document.getElementById("custMobile").value);
+      localStorage.setItem("address", document.getElementById("custAddress").value);
+    });
   });
-});
+
+}
 
   /* ==============================
      3. BRAND FILTER PARAM
