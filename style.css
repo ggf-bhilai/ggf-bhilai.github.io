@@ -977,3 +977,32 @@ button:hover {
   border-radius: 50%;
   cursor: pointer;
 }
+
+.customer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.customer-form input,
+.customer-form textarea {
+  width: 100%;
+  padding: 6px;
+  font-size: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.customer-form textarea {
+  resize: none;
+  height: 40px;
+}
+
+@media (max-width: 600px) {
+  .customer-form input,
+  .customer-form textarea {
+    font-size: 11px;
+    padding: 5px;
+  }
+}
