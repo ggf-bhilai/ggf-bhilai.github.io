@@ -187,18 +187,23 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.style.display = "none";
   });
 
-  document.getElementById("placeOrder")?.addEventListener("click", () => {
+  document.getElementById("placeOrder").onclick = () => {
 
-    let name = document.getElementById("custName").value;
-    let mobile = document.getElementById("custMobile").value;
-    let address = document.getElementById("custAddress").value;
+  let name = document.getElementById("custName").value.trim();
+  let mobile = document.getElementById("custMobile").value.trim();
+  let address = document.getElementById("custAddress").value.trim();
 
-    let text = buildOrderText();
+  let text = buildOrderText();
 
-    if (!name || !mobile) {
-      return alert("⚠️ Please fill Name & Mobile");
-    }
+  if (!name || !mobile) {
+    return alert("⚠️ Please fill Name & Mobile");
+  }
 
+  // ✅ Format Name (Proper Case)
+  name = name.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+
+  let orderId = "ORD" + Date.now();
+     // ✅ CLEAN WHATSAPP MESSAGE
     let finalMessage =
 `🛒 New Order - VeggieFresh
 
@@ -212,7 +217,7 @@ ${text}`;
     window.open(
       "https://wa.me/919074964418?text=" +
       encodeURIComponent(finalMessage),
-      "_blank"
+      window.open(url, "_blank");
     );
   });
 
