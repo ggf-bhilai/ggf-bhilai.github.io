@@ -203,21 +203,25 @@ document.addEventListener("DOMContentLoaded", function () {
   name = name.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
 
   let orderId = "ORD" + Date.now();
-     // ✅ CLEAN WHATSAPP MESSAGE
-    let finalMessage =
+
+  // ✅ CLEAN WHATSAPP MESSAGE
+  let finalMessage =
 `🛒 New Order - VeggieFresh
 
 👤 Name: ${name}
 📞 Mobile: ${mobile}
-📍 Address: ${address}
+📍 Address: ${address || "-"}
 
 -------------------------
+🛒 VeggieFresh Order List:
+
 ${text}`;
 
-    window.open(
-      "https://wa.me/919074964418?text=" +
-      encodeURIComponent(finalMessage),
-      window.open(url, "_blank");
+  // ✅ ENCODE PROPERLY
+  let url = "https://wa.me/919074964418?text=" + encodeURIComponent(finalMessage);
+
+  window.open(url, "_blank");
+};
     );
   });
 
