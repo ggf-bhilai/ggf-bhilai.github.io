@@ -225,17 +225,20 @@ ${text}`;
   // 💾 AUTO SAVE
   // ===============================
 
-  if (document.getElementById("custName")) {
-    custName.value = localStorage.getItem("name") || "";
-    custMobile.value = localStorage.getItem("mobile") || "";
-    custAddress.value = localStorage.getItem("address") || "";
+const custNameEl = document.getElementById("custName");
+const custMobileEl = document.getElementById("custMobile");
+const custAddressEl = document.getElementById("custAddress");
 
-    ["custName", "custMobile", "custAddress"].forEach(id => {
-      document.getElementById(id).addEventListener("input", () => {
-        localStorage.setItem("name", custName.value);
-        localStorage.setItem("mobile", custMobile.value);
-        localStorage.setItem("address", custAddress.value);
-      });
+if (custNameEl) {
+  custNameEl.value = localStorage.getItem("name") || "";
+  custMobileEl.value = localStorage.getItem("mobile") || "";
+  custAddressEl.value = localStorage.getItem("address") || "";
+
+  [custNameEl, custMobileEl, custAddressEl].forEach(el => {
+    el.addEventListener("input", () => {
+      localStorage.setItem("name", custNameEl.value);
+      localStorage.setItem("mobile", custMobileEl.value);
+      localStorage.setItem("address", custAddressEl.value);      });
     });
   }
 
