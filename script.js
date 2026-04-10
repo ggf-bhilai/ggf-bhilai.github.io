@@ -88,6 +88,18 @@ document.addEventListener("DOMContentLoaded", function () {
       "product.html?file=" + encodeURIComponent(product.file);
   }
 
+   function buildOrderText() {
+  let text = "";
+  let i = 1;
+
+  for (let item in cart) {
+    text += `${i}. ${item} x ${cart[item].qty}\n`;
+    i++;
+  }
+
+  return text;
+}
+
   function renderCatalogue() {
     let search = searchBox.value.toLowerCase();
     let catVal = categoryFilter.value;
