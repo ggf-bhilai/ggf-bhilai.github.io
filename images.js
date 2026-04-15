@@ -185,6 +185,7 @@ const images = [
 "Go, Orange Cheddar Cheese Diced 2kg - Rs. 1400.00, Cheese.jpg",
 "Go, Sandwich Slice 900gm - Rs. 500.00, Cheese.jpg",
 "Go, Double Tonned Milk 1Liter - Rs. 75.00, Dairy.jpg",
+"Godrej Yummiez, Crispy Potato Starz 400g - Rs. 126.00, Frozen Veg Snacks.webp",
 "Godrej Yummiez, Aloo Tikki 415g - Rs. 130.00, Frozen Veg Snacks.jpg",
 "Godrej Yummiez, American Sweet Corn 400g - Rs. 110.00, Frozen Vegetables.jpg",
 "Godrej Yummiez, Cheese Corn Nuggets 400g - Rs. 234.00, Frozen Veg Snacks.jpg",
