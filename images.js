@@ -212,7 +212,6 @@ const images = [
 "Godrej Yummiez, Chicken Seekh Kabab 360g - Rs. 275.00, Frozen Non-Veg Snacks.jpg",
 "Godrej Yummiez, Chilli Garlic Potato Bites 420g - Rs. 125.00, Frozen Veg Snacks.jpg",
 "Godrej Yummiez, Crispy Veg Stick 320g - Rs. 131.00, Frozen Veg Snacks.jpg",
-"Godrej Yummiez, Crispy Veg Sticks 320gm - Rs. 350.00, Frozen Veg Snacks.jpg",
 "Godrej Yummiez, French Fries 1kg - Rs. 234, Frozen Veg Snacks.jpg",
 "Godrej Yummiez, French Fries 425g - Rs. 125, Frozen Veg Snacks.jpg",
 "Godrej Yummiez, French Fries 750g - Rs. 205, Frozen Veg Snacks.jpg",
