@@ -304,6 +304,7 @@ const images = [
 "Mala's, Strawberry Fruit Filling 1Kg - Rs. 450.00, Bakery Fillings.jpg",
 "McCain, Air Fryer Fries 420g - Rs. 160.00, Frozen Veg Snacks.jpg",
 "McCain, Korean Zig Zag Fries 325g, Rs. 129.00, Frozen Veg Snacks.jpg",
+"McCain 2 in 1 French Fries and Smiles 375g - Rs. 99.00, Frozen Veg Snacks.jpg",
 "McCain, Italian Zig Zag Fries 325g - Rs. 129, Frozen Veg Snacks.jpg",
 "McCain, Aloo Tikki 1.5Kg - Rs. 250.00, Frozen Veg Snacks.jpg",
 "McCain, Aloo Tikki 400GM - Rs. 130.00, Frozen Veg Snacks.jpg",
