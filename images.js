@@ -198,7 +198,7 @@ const images = [
 "Godrej Yummiez, Cheesy Pizza Finger 1kg - Rs. 350.00, Frozen Veg Snacks.jpg",
 "Godrej Yummiez, Cheesy Pizza Finger 250g - Rs. 178, Frozen Veg Snacks.jpg",
 "Godrej Yummiez, Cheesy Pizza Finger 400g - Rs. 234, Frozen Veg Snacks.jpg",
-"Godrej Yummiez, Chicken Bites 225g - Rs. 178.00, Frozen Non-Veg Snacks.jpg",
+"Godrej Yummiez, Chicken Bites 225g - Rs. 155.00, Frozen Non-Veg Snacks.jpg",
 "Godrej Yummiez, Chicken Breakfast Salami 250g - Rs. 178.00, Frozen Chicken Cold Cut.jpg",
 "Godrej Yummiez, Chicken Breakfast Sausages 250g - Rs. 178.00, Frozen Chicken Cold Cut.jpg",
 "Godrej Yummiez, Chicken Burger 1Kg - Rs. 350.00, Frozen Non-Veg Snacks.jpg",
