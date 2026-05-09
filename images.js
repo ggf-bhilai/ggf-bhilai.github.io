@@ -185,6 +185,8 @@ const images = [
 "Go, Orange Cheddar Cheese Diced 2kg - Rs. 1400.00, Cheese.jpg",
 "Go, Sandwich Slice 900gm - Rs. 500.00, Cheese.jpg",
 "Go, Double Tonned Milk 1Liter - Rs. 75.00, Dairy.jpg",
+"Godrej Yummiez, Chicken Cheese Cocktail Sausages 400g - Rs. 234.00, Frozen Non-Veg Snacks.jpg",
+"Godrej Yummiez, Chicken Momos 420g - Rs. 184.00,  Frozen Non-Veg Snacks.jpg",
 "Godrej Yummiez, Chicken Chilli Sausages 250gm - Rs. 178.00, Frozen Non-Veg Snacks.jpg",
 "Godrej Yummiez, Chicken & Cheese Nuggets 325g - Rs. 267.00, Frozen Non-Veg Snacks.jpg",
 "Godrej Yummiez, Chicken Garlic Fingers 400g - Rs. 257.00, Frozen Non-Veg Snacks.jpg",
