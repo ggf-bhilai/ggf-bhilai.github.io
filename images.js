@@ -309,6 +309,7 @@ const images = [
 "Mala's, White Mint Mocktail Syrup 750ml - Rs. 240.00, Syrups and Crushes.jpg",
 "Mala's, Blueberry Fruit Filling 1Kg - Rs. 450.00, Bakery Fillings.jpg",
 "Mala's, Strawberry Fruit Filling 1Kg - Rs. 450.00, Bakery Fillings.jpg",
+"McCain, Air Fryer Masala Crispers 400g - Rs. 160.00, Frozen Veg Snacks.jpeg",
 "McCain, Air Fryer Fries 420g - Rs. 160.00, Frozen Veg Snacks.jpg",
 "McCain, Korean Zig Zag Fries 325g, Rs. 129.00, Frozen Veg Snacks.jpg",
 "McCain, 2 in 1 French Fries and Smiles 375g - Rs. 99.00, Frozen Veg Snacks.jpg",
