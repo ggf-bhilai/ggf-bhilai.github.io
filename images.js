@@ -318,7 +318,7 @@ const images = [
 "McCain, Chilli Cheesy Nuggets 400gm - Rs. 248.00, Frozen Veg Snacks.jpg",
 "McCain, Chilli Garlic Potato Bites 504gm - Rs. 165.00, Frozen Veg Snacks.jpg",
 "McCain, French Fries 200gm - Rs. 59.00, Frozen Veg Snacks.jpg",
-"McCain, French Fries 420gm - Rs. 93.00, Frozen Veg Snacks.jpg",
+"McCain, French Fries 420gm - Rs. 99.00, Frozen Veg Snacks.jpg",
 "McCain, French Fries Pepper Crunch 420gm - Rs. 175.00, Frozen Veg Snacks.jpg",
 "McCain, Masala Fries 420gm - Rs. 175.00, Frozen Veg Snacks.jpg",
 "McCain, Mexican Hot and Tangy Fries 400gm - Rs. 159.00, Frozen Veg Snacks.jpg",
