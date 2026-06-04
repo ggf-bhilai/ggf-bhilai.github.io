@@ -185,6 +185,7 @@ const images = [
 "Go, Orange Cheddar Cheese Diced 2kg - Rs. 1400.00, Cheese.jpg",
 "Go, Sandwich Slice 900gm - Rs. 500.00, Cheese.jpg",
 "Go, Double Tonned Milk 1Liter - Rs. 75.00, Dairy.jpg",
+"Godrej Yummiez, Chicken Kheema 300g - Rs. 190.00, Frozen Raw Chicken.jpg",
 "Godrej Yummiez, Chicken Lollipop 350g - Rs. 200.00, Frozen Raw Chicken.jpg",
 "Godrej Yummiez, Large Prawns 200g - Rs. 280.00, Frozen Prawns.jpg",
 "Godrej Yummiez, Medium Prawns 200g - Rs. 265.00, Frozen Prawns.jpg",
