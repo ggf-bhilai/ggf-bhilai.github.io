@@ -55,6 +55,7 @@ const images = [
 "Switz, Spring Roll Sheets 250mm (30 Sheets) 550g - Rs. 200.00, Bakery.png",
 "Rich's,  Double Dream Cream 1Ltr - Rs. 225.00, Dairy Products.png",  
 "McCain, Family Fun Combo Pack 1.2kg - Rs. 272.00, Frozen Veg Snacks.jpeg",
+"Everest, Schezwan Sauce 1.3kg - Rs. 200.00, Sauce Ketchup and Mayonnaise.jpg",
 "Fun Top, Continental Sauce 5kg - Rs. 250.00, Sauce Ketchup and Mayonnaise.png",
 "Amul, Butter 100gm - Rs. 60.00, Dairy Products.jpg",
 "Amul, Cheese Cheese Slice 750g - Rs. 425.00, Cheese.jpg",
