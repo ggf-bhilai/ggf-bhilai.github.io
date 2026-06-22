@@ -1,4 +1,5 @@
 const images = [
+"ITC, Chicken Burger Patty 1kg - Rs. 520.00, Frozen Non-Veg Snacks.jpg",
 "ITC, Chicken Burger Patty 1.5kg - Rs. 510.00, Frozen Non-Veg Snacks.jpg",
 "ITC, Paneer Patty 1kg - Rs. 500.00, Frozen Veg Snacks.jpg",
 "ITC, Batata Vada 1kg - Rs. 160.00, Frozen Veg Snacks.jpg",
