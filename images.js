@@ -1,4 +1,12 @@
 const images = [
+"ITC, Chicken Burger Patty 1.5kg - Rs. 510.00, Frozen Non-Veg Snacks.jpg",
+"ITC, Paneer Patty 1kg - Rs. 500.00, Frozen Veg Snacks.jpg",
+"ITC, Batata Vada 1kg - Rs. 160.00, Frozen Veg Snacks.jpg",
+"ITC, Hara Bhara Kebab 1kg - Rs. 270.00, Frozen Veg Snacks.jpg",
+"ITC, Veggie Pizza Pocket, 988g - Rs. 335.00, Frozen Veg Snacks.jpg",
+"ITC, Chicken Grill Patty 1.2kg - Rs. 435.00, Frozen Non-Veg Snacks.jpg",
+"ITC, Chicken Popcorn 1kg - Rs. 335.00, Frozen Non-Veg Snacks.jpg",
+"ITC, Coated Spicy Chicken Wings 1kg - Rs. 455.00, Frozen Non-Veg Snacks.jpg",
 "Finosta, Whole Wheat Spaghetti Pasta 500g - Rs. 175.00, Pasta and Noodles.png",
 "Finosta, Lasagne Pasta Sheets 500g - Rs. 300, Pasta and Noodles.png",
 "Finosta, Quinoa Penne Pasta 250g - Rs. 150.00, Pasta and Noodles.png",
